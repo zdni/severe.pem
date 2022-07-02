@@ -60,7 +60,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table class="table table-striped table-hover table-bordered">
+                  <table class="table table-striped table-hover table-bordered table-data">
                     <thead>
                       <th>No</th>
                       <th>Fasilitas</th>

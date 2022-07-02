@@ -4,7 +4,9 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0"><?= $data->name ?></h1>
+              <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
               <button class="btn btn-sm btn-secondary" onclick="history.back()">Kembali</button>
+              <?php endif; ?>
             </div>
           </div>
         </div>
@@ -53,7 +55,7 @@
                   <?php endif; ?>
                 </div>
                 <div class="card-body">
-                  <table class="table table-bordered table-striped table-hover">
+                  <table class="table table-bordered table-striped table-hover table-data">
                     <thead>
                       <th>No.</th>
                       <th>Username</th>
@@ -194,7 +196,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table class="table table-hover table-striped table-bordered">
+                  <table class="table table-hover table-striped table-bordered table-data">
                     <thead>
                       <th>No</th>
                       <th>Bahan Ajar</th>
@@ -326,7 +328,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table class="table table-bordered table-striped table-hover">
+                  <table class="table table-bordered table-striped table-hover table-data">
                     <thead>
                       <th>No</th>
                       <th>Title</th>

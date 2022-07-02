@@ -39,7 +39,7 @@ class Moduls_model extends CI_Model {
 
     public function moduls_show( $laboratory_id = NULL, $is_show = NULL )
     {
-        if( $is_show ) $this->db->where('is_show', $is_show);
+        if( !is_null($is_show) ) $this->db->where('is_show', $is_show);
         return $this->moduls( $laboratory_id );
     }
 

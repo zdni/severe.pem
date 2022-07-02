@@ -18,7 +18,7 @@
                   <h5>Pesan Pengunjung</h5>
                 </div>
                 <div class="card-body">
-                  <table class="table table-striped table-bordered table-hover">
+                  <table class="table table-striped table-bordered table-hover table-data">
                     <thead>
                       <th>No</th>
                       <th>Pengunjung</th>

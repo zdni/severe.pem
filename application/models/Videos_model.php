@@ -39,7 +39,7 @@ class Videos_model extends CI_Model {
 
     public function videos_show( $laboratory_id = NULL, $is_show = NULL )
     {
-        if( $is_show ) $this->db->where('is_show', $is_show);
+        if( !is_null($is_show) ) $this->db->where('is_show', $is_show);
         return $this->videos( $laboratory_id );
     }
 
@@ -47,7 +47,7 @@ class Videos_model extends CI_Model {
     {
         $this->db->select( $this->_table . '.*' );
         if( $laboratory_id ) $this->db->where('laboratory_id', $laboratory_id);
-        if( $start && $end ) return $this->db->get( $this->_table, $end, $start );
+        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }
 }

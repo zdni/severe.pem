@@ -49,7 +49,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table class="table table-bordered table-hover table-striped">
+                  <table class="table table-bordered table-hover table-striped table-data">
                     <thead>
                       <th>No</th>
                       <th>Menu</th>

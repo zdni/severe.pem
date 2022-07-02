@@ -45,7 +45,7 @@
                   </div>
                 </div>
                 <div class="card-body">
-                  <table class="table table-bordered table-hover">
+                  <table class="table table-bordered table-hover table-data">
                     <thead>
                       <th>No</th>
                       <th>Gambar</th>

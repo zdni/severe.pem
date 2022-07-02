@@ -46,7 +46,7 @@
                   <?php endif; ?>
                 </div>
                 <div class="card-body">
-                  <table class="table table-bordered table-striped table-hover">
+                  <table class="table table-bordered table-striped table-hover table-data">
                     <thead>
                       <th>No</th>
                       <th>Laboratorium</th>

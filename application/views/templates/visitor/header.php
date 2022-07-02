@@ -22,7 +22,7 @@
 													<span class="header-top-button-make-as-appoitment d-inline-flex align-items-center justify-content-center h-100 p-0 align-top">
 														<img src="<?= base_url('assets/img/logo-kesehatan.png') ?>" alt="" height="30px" style="margin-right: 20px;">
 														<img src="<?= base_url('assets/img/logo-48.png') ?>" alt="" height="30px" style="margin-right: 20px;">
-														<a href="<?= $this->session->userdata('user_id') ? base_url('auth/dashboard') : base_url('auth/login'); ?>" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none"><?= ( $this->session->userdata('role_id') ? 'Beranda' : 'Login' ) ?></a>
+														<a href="<?= $this->session->userdata('user_id') ? base_url('admin/dashboard') : base_url('auth/login'); ?>" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none"><?= ( $this->session->userdata('role_id') ? 'Beranda' : 'Login' ) ?></a>
 													</span>
 												</li>
 											</ul>

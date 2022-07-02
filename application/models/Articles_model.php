@@ -49,7 +49,7 @@ class Articles_model extends CI_Model {
         );
         $this->db->order_by('id', "desc");
         $this->db->order_by('post_date', "desc");
-        if( $start && $end ) return $this->db->get( $this->_table, $end, $start );
+        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }
 }

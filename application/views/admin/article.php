@@ -24,6 +24,8 @@
                 <div class="card-body">
                   <img src="<?= base_url('uploads/articles/thumbnails/') . $data->thumbnail ?>" alt="Thumbnail Berita" class="img-fluid">
                   <p><?= $data->description ?></p>
+                  <br>
+                  <h3>Isi Konten</h3>
                   <p><?= $data->file_content ?></p>
                 </div>
               </div>

@@ -16,7 +16,7 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h5><?= $page ?></h5>
+                  <h5><?= ( isset( $menu ) ) ? $menu->header : $page; ?></h5>
                   <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal-create-document">Tambah</button>
                   <div class="modal fade" id="modal-create-document">
                     <div class="modal-dialog">
@@ -61,6 +61,7 @@
                           <td><?= $number ?></td>
                           <td><?= $data->title ?></td>
                           <td>
+                            <a href="<?= base_url('uploads/documents/') . $data->file ?>" target="_blank" class="btn btn-sm btn-outline-primary">Lihat Dokumen</a>
                             <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal-edit-document-<?= $data->id ?>">Edit</button>
                             <div class="modal fade" id="modal-edit-document-<?= $data->id ?>">
                               <div class="modal-dialog">

@@ -43,6 +43,7 @@ class Profile extends Admin_Controller {
         {
             $title = $this->input->post('title');
             $content = $this->input->post('content');
+            $sequence = $this->input->post('sequence');
 
             $slug = str_replace( " ", "_", $title );
             $slug = str_replace( ".", "", $slug );
@@ -56,6 +57,7 @@ class Profile extends Admin_Controller {
             } else {
                 $data['title'] = $title;
                 $data['slug'] = $slug;
+                $data['sequence'] = $sequence;
                 $data['file'] = $file;
     
                 if( $this->profile_model->create( $data ) )
@@ -89,6 +91,7 @@ class Profile extends Admin_Controller {
             $content = $this->input->post('content');
             $file = $this->input->post('file');
             $title = $this->input->post('title');
+            $sequence = $this->input->post('sequence');
 
             if( !file_put_contents( './uploads/profile/' . $file, $content ) )
             {
@@ -96,6 +99,7 @@ class Profile extends Admin_Controller {
                 $message = 'Gagal Mengubah File Profil!';
             } else {
                 $data['title'] = $title;
+                $data['sequence'] = $sequence;
     
                 if( $this->profile_model->update( $id, $data ) )
                 {

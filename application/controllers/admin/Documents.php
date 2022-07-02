@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Documents extends Admin_Controller {
+class Documents extends Uadmin_Controller {
 	
 	function __construct()
 	{
@@ -67,9 +67,10 @@ class Documents extends Admin_Controller {
     {
         if( !$download_id ) return redirect( base_url('admin/documents/') );
 
+        $this->data['menu'] = $this->downloads_model->downloads( $download_id )->row();
         $this->data['datas'] = $this->documents_model->documents( $download_id )->result();
         $this->data['download_id'] = $download_id;
-        $this->data['page'] = 'Dafta Dokumen';
+        $this->data['page'] = 'Daftar Dokumen';
         $this->render('admin/documents');
     }
 

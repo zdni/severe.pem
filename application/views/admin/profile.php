@@ -21,8 +21,12 @@
                   <div class="card-body">
                     <div class="form-group">
                       <label for="">Titel Profil</label>
-                      <span style="font-size: 12px; display: block; font-weight: bold; margin-top: -12px; margin-bottom: 7px;" class="text-info">Titel profil sebagai penjelasan singkat tentang profil yang akan dibuat. (contoh: SEJARAH POLTEKKES KEMENKES MALUKU)</span>
+                      <span style="font-size: 12px; display: block; font-weight: bold; margin-top: -12px; margin-bottom: 7px;" class="text-info">Titel profil akan ditampilkan sebagai link menu</span>
                       <input type="text" name="title" id="title" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label for="">Urutan</label>
+                      <input type="number" name="sequence" id="sequence" class="form-control" value=1>
                     </div>
                     <div class="form-group">
                       <label for="">Konten</label>
@@ -47,6 +51,10 @@
                       <div class="form-group">
                         <label for="">Titel Profil</label>
                         <input type="text" name="title" id="title" class="form-control" value="<?= $data->title ?>">
+                      </div>
+                      <div class="form-group">
+                        <label for="">Urutan</label>
+                        <input type="number" name="sequence" id="sequence" class="form-control" value="<?= $data->sequence ?>">
                       </div>
                       <div class="form-group">
                         <label for="">Konten</label>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Moduls extends Admin_Controller {
+class Moduls extends User_Controller {
 	
 	function __construct()
 	{
@@ -76,7 +76,6 @@ class Moduls extends Admin_Controller {
             
             $data['title'] = $title;
             $data['is_show'] = $is_show;
-            $data['laboratory_id'] = $laboratory_id;
 
             $slug = str_replace( " ", "_", $title );
             $slug = str_replace( ".", "", $slug );

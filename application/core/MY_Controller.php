@@ -7,8 +7,9 @@ class MY_Controller extends CI_Controller {
     public function __construct(){
 	   parent::__construct();
 	   $this->data["menu_id"] = $this->router->fetch_class() . '_' . $this->router->fetch_method() ; 
-	   $this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
+	   $this->data["user_image"] = ( $this->session->userdata( 'user_image' ) != "" ) ? base_url('uploads/users/') . $this->session->userdata( 'user_image' ) : base_url('assets/img/user.png') ;
 	   $this->data["username"] = ( $this->session->userdata( 'username' ) != "" ) ? $this->session->userdata( 'username' ) : "User" ;
+	   $this->data["name"] = ( $this->session->userdata( 'name' ) != "" ) ? $this->session->userdata( 'name' ) : "User" ;
     }
 
     protected function render( $view = NULL, $template = NULL ) {
@@ -39,13 +40,34 @@ class User_Controller extends MY_Controller
 
 }
 
+class Visitor_Controller extends MY_Controller
+{
+    protected function render( $view = NULL, $template = 'visitor' ){
+  		parent::render( $view, $template );
+  	}
+
+}
+
 class Admin_Controller extends User_Controller
 {
 
     public function __construct(){
 	    parent::__construct();
-  	    if( !( $this->session->userdata( 'role_name' ) == 'admin' ) ){
-            $this->session->set_flashdata('alert', '' );
+  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin'] ) ) ){
+            $this->session->set_flashdata('alert', 'error' );
+            redirect( base_url('/auth/login') );
+  	    }
+    }
+
+}
+
+class Uadmin_Controller extends User_Controller
+{
+
+    public function __construct(){
+	    parent::__construct();
+  	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin', 'uadmin'] ) ) ){
+            $this->session->set_flashdata('alert', 'error' );
             redirect( base_url('/auth/login') );
   	    }
     }

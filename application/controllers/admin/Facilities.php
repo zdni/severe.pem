@@ -143,7 +143,7 @@ class Facilities extends Admin_Controller {
 	{
 		$config['upload_path']          = './uploads/facilities/';
 		$config['overwrite']            = true;
-		$config['allowed_types']        = 'jpg|png';
+		$config['allowed_types']        = 'jpg|png|jpeg';
 		$config['max_size']             = 2048;
 		$config['file_name']			= $title;
 

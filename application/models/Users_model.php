@@ -22,6 +22,15 @@ class Users_model extends CI_Model {
         return false;
     }
 
+    public function delete( $id = NULL )
+    {
+        if ( $id ) {
+            $this->db->where( $this->_table . '.id', $id );
+            return $this->db->delete( $this->_table );
+        }
+        return false;
+    }
+
     public function user( $user_id = NULL, $username = NULL )
     {
         if ($user_id) {
@@ -31,6 +40,12 @@ class Users_model extends CI_Model {
             $this->db->where( $this->_table . '.username', $username );
         }
         $this->db->limit(1);
+        return $this->users();
+    }
+
+    public function users_laboratory( $laboratory_id = NULL )
+    {
+        if ($laboratory_id) $this->db->where( $this->_table . '.laboratory_id', $laboratory_id );
         return $this->users();
     }
 

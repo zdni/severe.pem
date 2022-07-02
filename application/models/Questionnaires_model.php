@@ -33,14 +33,34 @@ class Questionnaires_model extends CI_Model {
 
     public function questionnaire( $id = NULL )
     {
-        if( $id ) $this->db->where('id', $id);
+        if( $id ) $this->db->where( $this->_table . '.id', $id);
         return $this->questionnaires();
     }
 
-    public function questionnaires( )
+    public function last_questionnaire( $laboratory_id = NULL )
+    {
+        $this->db->where( $this->_table . '.is_show', 1);
+        $this->db->order_by('id', 'desc');
+        $this->db->limit(1);
+        return $this->questionnaires( $laboratory_id );
+    }
+
+    public function questionnaires( $laboratory_id = NULL )
     {
         $this->db->select( $this->_table . '.*' );
+        $this->db->select('laboratories.name AS laboratory_name');
+        $this->db->join(
+            'laboratories',
+            'laboratories.id = ' . $this->_table . '.laboratory_id',
+            'join'
+        );
+        if( $laboratory_id ) $this->db->where('laboratory_id', $laboratory_id);
         return $this->db->get( $this->_table );
+    }
+
+    public function set_all_hidden()
+    {
+        return $this->db->update( $this->_table, ['is_show' => 0] );
     }
 }
 

@@ -10,7 +10,7 @@
           <img src="<?= $user_image ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="<?= base_url('profile') ?>" class="d-block"><?= $username ?></a>
+          <a href="<?= base_url('profile') ?>" class="d-block"><?= $name ?></a>
         </div>
       </div>
 
@@ -18,7 +18,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
             <a href="<?= base_url('admin/dashboard') ?>" class="nav-link" id="dashboard_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-columns"></i>
               <p>
                 Beranda
               </p>
@@ -26,7 +26,7 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('admin/profile') ?>" class="nav-link" id="profile_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-info-circle"></i>
               <p>
                 Profil
               </p>
@@ -34,7 +34,7 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('admin/laboratories') ?>" class="nav-link" id="laboratories_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-flask"></i>
               <p>
                 Laboratorium
               </p>
@@ -50,15 +50,23 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('admin/articles') ?>" class="nav-link" id="articles_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-newspaper"></i>
               <p>
                 Berita
               </p>
             </a>
           </li>
           <li class="nav-item">
+            <a href="<?= base_url('admin/galleries') ?>" class="nav-link" id="galleries_index">
+              <i class="nav-icon fas fa-image"></i>
+              <p>
+                Galeri
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="<?= base_url('admin/documents') ?>" class="nav-link" id="documents_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Dokumen
               </p>
@@ -66,7 +74,7 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('admin/messages') ?>" class="nav-link" id="messages_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Pesan Pengunjung
               </p>
@@ -74,7 +82,7 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('admin/questionnaires') ?>" class="nav-link" id="questionnaires_index">
-              <i class="nav-icon fas fa-th"></i>
+              <i class="nav-icon fas fa-question-circle"></i>
               <p>
                 Kuisioner
               </p>

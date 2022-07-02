@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                       <label for="">Konten</label>
-                      <textarea name="content" id="content" class="form-control summernote_form"></textarea>
+                      <textarea name="content" id="content" class="form-control summernote_form"><?= (isset($data)) ? $data->file_content : '' ?></textarea>
                     </div>
                   </div>
                   <div class="card-footer">

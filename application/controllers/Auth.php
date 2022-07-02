@@ -38,9 +38,11 @@ class Auth extends CI_Controller {
                     $session = [
                         'user_id' => $user->id,
                         'username' => $user->username,
+                        'name' => $user->name,
                         'role_id' => $user->role_id,
                         'role_name' => $user->role_name,
                         'user_image' => $user->image,
+                        'laboratory_id' => $user->laboratory_id,
                     ];
 
                     if ( $user->role_name == 'admin' ) {

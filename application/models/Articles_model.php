@@ -31,13 +31,14 @@ class Articles_model extends CI_Model {
         return false;
     }
 
-    public function article( $id = NULL )
+    public function article( $id = NULL, $slug = NULL )
     {
         if( $id ) $this->db->where( $this->_table . '.id', $id);
+        if( $slug ) $this->db->where( $this->_table . '.slug', $slug);
         return $this->articles();
     }
 
-    public function articles( )
+    public function articles( $start = NULL, $end = NULL )
     {
         $this->db->select( $this->_table . '.*' );
         $this->db->select( 'users.name AS username' );
@@ -46,6 +47,8 @@ class Articles_model extends CI_Model {
             'users.id = ' . $this->_table . '.create_by',
             'join'
         );
+        $this->db->order_by('post_date', "desc");
+        if( $start && $end ) return $this->db->get( $this->_table, $start, $end );
         return $this->db->get( $this->_table );
     }
 }

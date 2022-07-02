@@ -39,7 +39,7 @@
                           <td><?= $data->message ?></td>
                           <td><?= date( "d M Y", strtotime( $data->date ) ) ?></td>
                           <td>
-                            <button class="btn btn-sm btn-outline-secondary">Kirim Pesan</button>
+                            <a href="https://mail.google.com/mail/u/0/?fs=1&to=<?= $data->email ?>&tf=cm" class="btn btn-sm btn-outline-info" target="_blank">Kirim Balasan Email</a>
                           </td>
                         </tr>
                       <?php $number++; } ?>

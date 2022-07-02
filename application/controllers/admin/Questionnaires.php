@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Questionnaires extends Admin_Controller {
+class Questionnaires extends Uadmin_Controller {
 	
 	function __construct()
 	{
@@ -13,7 +13,8 @@ class Questionnaires extends Admin_Controller {
 
 	public function index()
     {
-        $this->data['datas'] = $this->questionnaires_model->questionnaires()->result();
+        $laboratory_id = ( $this->session->userdata('role_name') == 'admin' ) ? NULL : $this->session->userdata('laboratory_id');
+        $this->data['datas'] = $this->questionnaires_model->questionnaires( $laboratory_id )->result();
         $this->data['page'] = 'Daftar Kuisioner';
         $this->render('admin/questionnaires');
     }
@@ -29,6 +30,7 @@ class Questionnaires extends Admin_Controller {
         {
             $title = $this->input->post('title');
             $link = $this->input->post('link');
+            $is_show = $this->input->post('is_show');
 
             $slug = str_replace( " ", "_", $title );
             $slug = str_replace( ".", "", $slug );
@@ -37,7 +39,10 @@ class Questionnaires extends Admin_Controller {
             $data['title'] = $title;
             $data['slug'] = $slug;
             $data['link'] = $link;
-			
+            $data['is_show'] = $is_show;
+            $data['laboratory_id'] = $this->session->userdata('laboratory_id');
+
+            if( $is_show == 1 ) $this->questionnaires_model->set_all_hidden();
             if( $this->questionnaires_model->create( $data ) )
             {
                 $alert = 'success';
@@ -66,6 +71,7 @@ class Questionnaires extends Admin_Controller {
             $id = $this->input->post('id');
             $title = $this->input->post('title');
             $link = $this->input->post('link');
+            $is_show = $this->input->post('is_show');
 
             $slug = str_replace( " ", "_", $title );
             $slug = str_replace( ".", "", $slug );
@@ -74,7 +80,9 @@ class Questionnaires extends Admin_Controller {
             $data['title'] = $title;
             $data['slug'] = $slug;
             $data['link'] = $link;
+            $data['is_show'] = $is_show;
            
+            if( $is_show == 1 ) $this->questionnaires_model->set_all_hidden();
             if( $this->questionnaires_model->update( $id, $data ) )
             {
                 $alert = 'success';

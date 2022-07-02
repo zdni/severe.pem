@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Laboratories extends Admin_Controller {
+class Laboratories extends Uadmin_Controller {
 	
 	function __construct()
 	{
@@ -9,6 +9,8 @@ class Laboratories extends Admin_Controller {
         $this->load->model([
             'laboratories_model',
             'moduls_model',
+            'users_model',
+            'videos_model'
         ]);
         $this->data['menu_id'] = 'laboratories_index';
 	}
@@ -19,8 +21,14 @@ class Laboratories extends Admin_Controller {
         // $explode = explode( "v=", $a );
         // echo "<img src='http://img.youtube.com/vi/" . $explode[1] . "/0.jpg'>";
         // die;
-        $datas = $this->laboratories_model->laboratories()->result();
-        unset( $datas[0] );
+        if( $this->session->userdata('role_name') == 'admin' ) {
+            $datas = $this->laboratories_model->laboratories()->result();
+            unset( $datas[0] );
+        }
+        if( $this->session->userdata('role_name') == 'uadmin' ) {
+            $laboratory_id = $this->session->userdata('role_name');
+            $datas = $this->laboratories_model->laboratory( $laboratory_id )->result();
+        }
         $this->data['datas'] = $datas;
         
         $this->data['page'] = 'Daftar Laboratorium';
@@ -72,7 +80,9 @@ class Laboratories extends Admin_Controller {
             $data->file_content = file_get_contents( './uploads/laboratories/' . $data->file );
         }
         
+        $this->data['users'] = $this->users_model->users_laboratory( $id )->result();
         $this->data['moduls'] = $this->moduls_model->moduls( $id )->result();
+        $this->data['videos'] = $this->videos_model->videos( $id )->result();
         $this->data['data'] = $data;
         $this->data['page'] = 'Detail Laboratorium';
         $this->render('admin/laboratory');

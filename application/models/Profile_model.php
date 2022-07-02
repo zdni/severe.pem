@@ -31,12 +31,13 @@ class Profile_model extends CI_Model {
         return false;
     }
 
-    public function profile( $id = NULL )
+    public function profile( $id = NULL, $slug = NULL )
     {
         $this->db->select( $this->_table . '.*' );
         if( $id ) $this->db->where('id', $id);
+        if( $slug ) $this->db->where('slug', $slug);
+        $this->db->order_by('sequence', 'asc');
         return $this->db->get( $this->_table );
     }
 }
-
 ?>

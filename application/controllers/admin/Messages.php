@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Messages extends Admin_Controller {
+class Messages extends Uadmin_Controller {
 	
 	function __construct()
 	{

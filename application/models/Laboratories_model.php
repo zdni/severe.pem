@@ -25,6 +25,19 @@ class Laboratories_model extends CI_Model {
     public function delete( $id = NULL )
     {
         if ( $id ) {
+            // moduls
+            $this->db->where(  'moduls.laboratory_id', $id );
+            $this->db->delete( 'moduls' );
+            // questionnaires
+            $this->db->where(  'questionnaires.laboratory_id', $id );
+            $this->db->delete( 'questionnaires' );
+            // users
+            $this->db->where(  'users.laboratory_id', $id );
+            $this->db->delete( 'users' );
+            // videos
+            $this->db->where(  'videos.laboratory_id', $id );
+            $this->db->delete( 'videos' );
+
             $this->db->where( $this->_table . '.id', $id );
             return $this->db->delete( $this->_table );
         }

@@ -16,6 +16,7 @@
               <div class="card">
                 <div class="card-header">
                   <h5>Kuisioner</h5>
+                  <span class="text-info" style="display: block; font-size: 12px; font-weight: bold;">Hanya satu link kuisioner yang dapat aktif di satu waktu</span>
                   <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal-create-questionnaire">Tambah</button>
 
                   <div class="modal fade" id="modal-create-questionnaire">
@@ -37,6 +38,14 @@
                               <label for="">Link</label>
                               <input type="text" name="link" id="link" class="form-control" required>
                             </div>
+                            <div class="form-group">
+                              <label for="">Status</label>
+                              <span class="text-info" style="display: block; font-size: 12px; font-weight: bold;">pilih "Jadikan Kuisioner" agar kuisioner dapat diakses lewat link kuisioner</span>
+                              <select name="is_show" id="is_show" class="form-control">
+                                <option value="0">Sembunyikan</option>
+                                <option value="1">Jadikan Kuisioner</option>
+                              </select>
+                            </div>
                           </div>
                           <div class="modal-footer justify-content-between">
                             <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Batal</button>
@@ -53,14 +62,20 @@
                       <th>No</th>
                       <th>Kuisioner</th>
                       <th>Link</th>
+                      <th>Status</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
-                      <?php $number = 1; foreach( $datas as $data ) { ?>
+                      <?php $status = ['Sembunyikan', 'Jadikan Kuisioner']; $number = 1; foreach( $datas as $data ) { ?>
                         <tr>
                           <td><?= $number ?></td>
-                          <td><?= $data->title ?></td>
-                          <td><?= $data->link ?></td>
+                          <td>
+                            <?= $data->title ?>
+                            <br>
+                            <span class="badge badge-info"><?= $data->laboratory_name ?></span>
+                          </td>
+                          <td><a href="<?= $data->link ?>" class="btn btn-sm btn-outline-primary" target="_blank">Buka Kuisioner</a></td>
+                          <td><?= $status[$data->is_show] ?></td>
                           <td>
                             <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal-edit-questionnaire-<?= $data->id ?>">Edit</button>
                             <div class="modal fade" id="modal-edit-questionnaire-<?= $data->id ?>">
@@ -82,6 +97,14 @@
                                       <div class="form-group">
                                         <label for="">Link</label>
                                         <input type="text" name="link" id="link" class="form-control" required value="<?= $data->link ?>">
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="">Status</label>
+                                        <span class="text-info" style="display: block; font-size: 12px; font-weight: bold;">pilih "Jadikan Kuisioner" agar kuisioner dapat diakses lewat link kuisioner</span>
+                                        <select name="is_show" id="is_show" class="form-control">
+                                          <option <?= ($data->is_show == 0) ? 'selected' : '' ?> value="0">Sembunyikan</option>
+                                          <option <?= ($data->is_show == 1) ? 'selected' : '' ?> value="1">Jadikan Kuisioner</option>
+                                        </select>
                                       </div>
                                     </div>
                                     <div class="modal-footer justify-content-between">

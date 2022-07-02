@@ -21,11 +21,12 @@
 						<div class="row">
 							<div class="col">
                                 <div class="cards-medical-services row flex-wrap justify-content-center mb-0">
-                                    <?php foreach ($documents as $document) { ?>
+                                    <?php foreach ($facilities as $facility) { ?>
                                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
                                             <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary"><a href="<?= base_url('uploads/documents/') . $document->file ?>" target="_blank"><?= $document->title ?></a></h4>
-												<a href="<?= base_url('uploads/documents/') . $document->file ?>" target="_blank" class="font-weight-semibold text-uppercase text-decoration-none">Buka Dokumen</a>
+                                                <img src="<?= base_url('uploads/facilities/') . $facility->image ?>" class="img-fluid mb-5" alt="<?= $facility->name ?>">
+                                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary"><?= $facility->name ?></h4>
+                                                <p class="card-text mb-2 text-center"><?= $facility->description ?></p>
                                             </div>
                                         </div>
                                     <?php } ?>

@@ -7,19 +7,23 @@
 							<img src="<?= base_url('assets/img/logo.png') ?>" alt="Logo Footer" width="100%">
 						</div>
 						<div class="col-sm-6 col-lg-3 footer-column footer-column-get-in-touch">
-							<h4 class="mb-4 text-uppercase">Poltekkes Kemenkes Maluku</h4>
+							<h4 class="mb-4 text-uppercase"><?= $institut ?></h4>
 							<div class="info custom-info mb-4">
 								<div class="custom-info-block custom-info-block-address">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-address">Alamat</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-address">Jl. Laksdya Leo Wattimena, Negeri Lama - Ambon</span>
+									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-address"><?= $alamat ?></span>
 								</div>
 								<div class="custom-info-block custom-info-block-phone">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-phone">Telepon</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-phone">(0911) 362943</span>
+									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-phone">(<?= $telepon ?></span>
 								</div>
 								<div class="custom-info-block custom-info-block-email">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-email">Fax</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-email">(0911) 362949</span>
+									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-email">(<?= $fax ?></span>
+								</div>
+								<div class="custom-info-block custom-info-block-email">
+									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-email">Email</span>
+									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-email"><?= $email ?></span>
 								</div>
 							</div>
 						</div>
@@ -42,7 +46,7 @@
 				<div class="footer-copyright pt-3 pb-3 container bg-color-quaternary">
 					<div class="row">
 						<div class="col-lg-12 text-center m-0 pb-4">
-							<p class="text-color-default">Poltekkes Kemenkes Maluku ©  2022.</p>
+							<p class="text-color-default"><?= $institut ?> ©  2022.</p>
 						</div>
 					</div>
 				</div>
@@ -56,27 +60,29 @@
 		<script src="<?= base_url('assets/visitor/') ?>vendor/jquery.easing/jquery.easing.min.js"></script>
 		<script src="<?= base_url('assets/visitor/') ?>vendor/jquery.cookie/jquery.cookie.min.js"></script>
 		<script src="<?= base_url('assets/visitor/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="<?= base_url('assets/visitor/') ?>vendor/jquery.validation/jquery.validate.min.js"></script>
-		<script src="<?= base_url('assets/visitor/') ?>vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-		<script src="<?= base_url('assets/visitor/') ?>vendor/jquery.gmap/jquery.gmap.min.js"></script>
+		<!-- <script src="<?= base_url('assets/visitor/') ?>vendor/jquery.validation/jquery.validate.min.js"></script> -->
+		<!-- <script src="<?= base_url('assets/visitor/') ?>vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script> -->
+		<!-- <script src="<?= base_url('assets/visitor/') ?>vendor/jquery.gmap/jquery.gmap.min.js"></script> -->
 		<script src="<?= base_url('assets/visitor/') ?>vendor/lazysizes/lazysizes.min.js"></script>
 		<script src="<?= base_url('assets/visitor/') ?>vendor/isotope/jquery.isotope.min.js"></script>
 		<script src="<?= base_url('assets/visitor/') ?>vendor/owl.carousel/owl.carousel.min.js"></script>
 		<script src="<?= base_url('assets/visitor/') ?>vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 		<script src="<?= base_url('assets/visitor/') ?>vendor/vide/jquery.vide.min.js"></script>
-		<script src="<?= base_url('assets/visitor/') ?>vendor/vivus/vivus.min.js"></script>
+		<!-- <script src="<?= base_url('assets/visitor/') ?>vendor/vivus/vivus.min.js"></script> -->
+
+		<script src="<?= base_url('assets/') ?>plugins/sweetalert2/sweetalert2.min.js"></script>
 
 		<script src="<?= base_url('assets/visitor/') ?>js/theme.js"></script>
 
-		<script src="<?= base_url('assets/visitor/') ?>js/views/view.contact.js"></script>
-
 		<script src="<?= base_url('assets/visitor/') ?>js/theme.init.js"></script>
 		<script>
+			if( '<?= $this->session->flashdata('alert') ?>' == 'success' ) Swal.fire( 'Berhasil!', '<?= $this->session->flashdata('message') ?>', 'success' );
+			if( '<?= $this->session->flashdata('alert') ?>' == 'warning' ) Swal.fire( 'Peringatan!', '<?= $this->session->flashdata('message') ?>', 'warning' );
+			if( '<?= $this->session->flashdata('alert') ?>' == 'error' ) Swal.fire( 'Gagal!', '<?= $this->session->flashdata('message') ?>', 'error' );
+
 			const menu_id = "<?= $menu_id ?>";
 			const menu_link = document.getElementById( menu_id );
 			if( menu_link ) menu_link.classList.add('active');
-			
-			$('.summernote_form').summernote()
 		</script>
     </body>
 </html>

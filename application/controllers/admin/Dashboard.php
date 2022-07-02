@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends User_Controller {
+class Dashboard extends Admin_Controller {
 	
 	function __construct()
 	{

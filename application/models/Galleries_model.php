@@ -40,7 +40,7 @@ class Galleries_model extends CI_Model {
     public function galleries( $start = NULL, $end = NULL )
     {
         $this->db->select( $this->_table . '.*' );
-        if( $start && $end ) return $this->db->get( $this->_table, $start, $end );
+        if( $start && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }
 }

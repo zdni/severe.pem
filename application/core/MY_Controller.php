@@ -55,7 +55,7 @@ class Admin_Controller extends User_Controller
 	    parent::__construct();
   	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin'] ) ) ){
             $this->session->set_flashdata('alert', 'error' );
-            redirect( base_url('/auth/login') );
+            redirect( base_url('/admin/laboratories') );
   	    }
     }
 

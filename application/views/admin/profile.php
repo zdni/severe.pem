@@ -13,6 +13,26 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
+              <div class="row">
+                <?php foreach ($profiles as $profile) { ?>
+                  <div class="col-md-6 col-12">
+                    <div class="card mb-5">
+                      <form action="<?= base_url('admin/profile/profile') ?>" method="post">
+                        <div class="card-body">
+                          <input type="hidden" name="file" id="file" value="<?= $profile->file ?>">
+                          <div class="form-group">
+                            <label for=""><?= $profile->label ?></label>
+                            <input type="text" name="file_content" id="file_content" class="form-control" value="<?= $profile->file_content ?>">
+                          </div>
+                        </div>
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                <?php } ?>
+              </div>
               <div class="card mb-5">
                 <form action="<?= base_url('admin/profile/create') ?>" method="post">
                   <div class="card-header">

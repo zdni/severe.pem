@@ -44,9 +44,10 @@ class Laboratories_model extends CI_Model {
         return false;
     }
 
-    public function laboratory( $id = NULL )
+    public function laboratory( $id = NULL, $slug = NULL )
     {
         if( $id ) $this->db->where('id', $id);
+        if( $slug ) $this->db->where('slug', $slug);
         return $this->laboratories();
     }
 

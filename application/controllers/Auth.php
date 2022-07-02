@@ -49,6 +49,10 @@ class Auth extends CI_Controller {
                         $path = 'admin/dashboard';
                     }
 
+                    if ( $user->role_name == 'uadmin' ) {
+                        $path = 'admin/laboratories';
+                    }
+
                     $this->session->set_userdata( $session );
                     $this->session->set_flashdata('alert', 'success');   
                     $this->session->set_flashdata('message', 'Login Berhasil');   

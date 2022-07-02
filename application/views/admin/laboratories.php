@@ -16,6 +16,7 @@
               <div class="card">
                 <div class="card-header">
                   <h5>Daftar Laboratorium</h5>
+                  <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
                   <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal-create-laboratory">Tambah</button>
 
                   <div class="modal fade" id="modal-create-laboratory">
@@ -42,6 +43,7 @@
                       </div>
                     </div>
                   </div>
+                  <?php endif; ?>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped table-hover">
@@ -57,6 +59,7 @@
                           <td><?= $data->name ?></td>
                           <td>
                             <a href="<?= base_url('admin/laboratories/detail/' . $data->id ) ?>" class="btn btn-sm btn-outline-info">Detail</a>
+                            <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
                             <button class="btn btn-sm btn-outline-danger" type="button" data-toggle="modal" data-target="#modal-delete-laboratory-<?= $data->id ?>">Hapus</button>
 
                             <div class="modal fade" id="modal-delete-laboratory-<?= $data->id ?>">
@@ -81,6 +84,7 @@
                                 </div>
                               </div>
                             </div>
+                            <?php endif; ?>
                           </td>
                         </tr>
                       <?php $number++; } ?>

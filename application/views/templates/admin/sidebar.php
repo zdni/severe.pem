@@ -16,6 +16,7 @@
 
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+          <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
           <li class="nav-item">
             <a href="<?= base_url('admin/dashboard') ?>" class="nav-link" id="dashboard_index">
               <i class="nav-icon fas fa-columns"></i>
@@ -33,18 +34,19 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/laboratories') ?>" class="nav-link" id="laboratories_index">
-              <i class="nav-icon fas fa-flask"></i>
-              <p>
-                Laboratorium
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a href="<?= base_url('admin/facilities') ?>" class="nav-link" id="facilities_index">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Fasilitas
+              </p>
+            </a>
+          </li>
+          <?php endif; ?>
+          <li class="nav-item">
+            <a href="<?= base_url('admin/laboratories') ?>" class="nav-link" id="laboratories_index">
+              <i class="nav-icon fas fa-flask"></i>
+              <p>
+                Laboratorium
               </p>
             </a>
           </li>

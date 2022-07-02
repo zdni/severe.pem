@@ -25,7 +25,7 @@
 									<h3 class="text-color-secondary text-capitalize font-weight-bold text-5 m-0 mb-3">Profil</h3>
 									<ul class="nav nav-list flex-column mb-0 p-relative right-9">
                                         <?php foreach ($menu_profiles as $menu_profile) { ?>
-                                            <li class="nav-item"><a class="nav-link font-weight-bold text-primary text-3 border-0 my-1 p-relative" href="<?= base_url('dashboard/profile/') . $menu_profile->slug ?>"><?= $menu_profile->title ?></a></li>
+                                            <li class="nav-item"><a class="nav-link font-weight-bold text-primary text-3 border-0 my-1 p-relative" href="<?= base_url('dashboard/profile?slug=') . $menu_profile->slug ?>"><?= $menu_profile->title ?></a></li>
                                         <?php } ?>
 									</ul>
 								</div>

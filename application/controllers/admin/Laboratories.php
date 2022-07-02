@@ -26,7 +26,7 @@ class Laboratories extends Uadmin_Controller {
             unset( $datas[0] );
         }
         if( $this->session->userdata('role_name') == 'uadmin' ) {
-            $laboratory_id = $this->session->userdata('role_name');
+            $laboratory_id = $this->session->userdata('laboratory_id');
             $datas = $this->laboratories_model->laboratory( $laboratory_id )->result();
         }
         $this->data['datas'] = $datas;

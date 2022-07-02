@@ -17,6 +17,7 @@
               <div class="card">
                 <div class="card-header">
                   <h5>Admin Laboratorium</h5>  
+                  <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
                   <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal-create-admin-lab">Tambah</button>
 
                   <div class="modal fade" id="modal-create-admin-lab">
@@ -49,6 +50,7 @@
                       </div>
                     </div>
                   </div>
+                  <?php endif; ?>
                 </div>
                 <div class="card-body">
                   <table class="table table-bordered table-striped table-hover">

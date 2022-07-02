@@ -37,6 +37,12 @@ class Moduls_model extends CI_Model {
         return $this->moduls();
     }
 
+    public function moduls_show( $laboratory_id = NULL, $is_show = NULL )
+    {
+        if( $is_show ) $this->db->where('is_show', $is_show);
+        return $this->moduls( $laboratory_id );
+    }
+
     public function moduls( $laboratory_id = NULL )
     {
         $this->db->select( $this->_table . '.*' );

@@ -41,8 +41,10 @@
 								<div class="px-3 mt-4">
 									<h3 class="text-color-secondary text-capitalize font-weight-bold text-5 m-0 mb-3">Berita Terkini</h3>
 									<div class="pb-2 mb-1">
-										<a href="#" class="text-color-default text-uppercase text-1 mb-0 d-block text-decoration-none">10 Jan 2022 <span class="opacity-3 d-inline-block px-2">|</span> John Doe</a>
-										<a href="#" class="text-color-dark text-hover-primary font-weight-bold text-3 d-block pb-3 line-height-4">Lorem ipsum dolor sit amet</a>
+										<?php foreach ($new_articles as $new_article) { ?>
+											<a href="<?= base_url('dashboard/article?slug=') . $new_article->slug ?>" class="text-color-default text-uppercase text-1 mb-0 d-block text-decoration-none"><?= date('d M Y', strtotime( $new_article->post_date )) ?> <span class="opacity-3 d-inline-block px-2">|</span> <?= $new_article->username ?></a>
+											<a href="<?= base_url('dashboard/article?slug=') . $new_article->slug ?>" class="text-color-dark text-hover-primary font-weight-bold text-3 d-block pb-3 line-height-4"><?= $new_article->title ?></a>
+										<?php } ?>
 									</div>
 								</div>
 							</aside>

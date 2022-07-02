@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 02 Jul 2022 pada 10.50
+-- Generation Time: 02 Jul 2022 pada 14.54
 -- Versi Server: 5.7.38-0ubuntu0.18.04.1
 -- PHP Version: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
 
@@ -43,7 +43,18 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `title`, `description`, `file`, `thumbnail`, `create_by`, `post_date`, `create_date`, `slug`) VALUES
-(1, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022');
+(1, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(2, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(3, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(4, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(5, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(6, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(7, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(8, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(9, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(10, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(11, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022'),
+(12, 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022', 'Kegiatan Try Out Uji Kompetensi (UKom) Juni 2022 Computer Based Test (CBT) oleh Poltekkes Kemenkes Maluku yang diikuti oleh jurusan keperawatan Ambon 18 Juni 2022, Teknologi Laboratorium Medis 19 Juni 2022, dan Gizi 20 Juni 2022.', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.html', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022.jpg', 1, '2022-07-01', '2022-07-01', 'kegiatan_try_out_uji_kompetensi_(ukom)_juni_2022');
 
 -- --------------------------------------------------------
 
@@ -188,13 +199,6 @@ CREATE TABLE `messages` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `messages`
---
-
-INSERT INTO `messages` (`id`, `name`, `email`, `phone`, `subject`, `message`, `date`) VALUES
-(1, 'Al Zidni Kasim', 'alzidni2000@gmail.com', '081232578168', 'Pesan Testing', 'Pesan Testing dari Developer', '2022-07-01');
-
 -- --------------------------------------------------------
 
 --
@@ -208,6 +212,13 @@ CREATE TABLE `moduls` (
   `is_show` int(1) NOT NULL,
   `laboratory_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `moduls`
+--
+
+INSERT INTO `moduls` (`id`, `title`, `file`, `is_show`, `laboratory_id`) VALUES
+(1, 'Sample VUE JS', 'sample_vue_js.pdf', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -245,13 +256,6 @@ CREATE TABLE `questionnaires` (
   `is_show` int(1) NOT NULL,
   `laboratory_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `questionnaires`
---
-
-INSERT INTO `questionnaires` (`id`, `title`, `slug`, `link`, `is_show`, `laboratory_id`) VALUES
-(1, 'Pendaftaran Siswa Baru SMA NEGERI 1 MOROSI', 'pendaftaran_siswa_baru_sma_negeri_1_morosi', 'https://docs.google.com/forms/d/e/1FAIpQLSeVd6k317OZKAxbud4yATuOBAjoti2VyHe-xkjqFCxH4LIjZQ/viewform', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -309,13 +313,6 @@ CREATE TABLE `videos` (
   `is_show` int(1) NOT NULL,
   `laboratory_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `videos`
---
-
-INSERT INTO `videos` (`id`, `title`, `link`, `is_show`, `laboratory_id`) VALUES
-(1, 'Poltekkes Kemenkes Maluku 2021 | Maluku', 'https://www.youtube.com/watch?v=sE_E0fRFCBE', 1, 2);
 
 --
 -- Indexes for dumped tables
@@ -420,7 +417,7 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `documents`
 --
@@ -445,7 +442,7 @@ ALTER TABLE `galleries`
 -- AUTO_INCREMENT for table `heros`
 --
 ALTER TABLE `heros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `laboratories`
 --
@@ -455,12 +452,12 @@ ALTER TABLE `laboratories`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `moduls`
 --
 ALTER TABLE `moduls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `profile`
 --

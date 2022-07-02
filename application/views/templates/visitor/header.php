@@ -13,22 +13,16 @@
 											<ul class="nav nav-pills justify-content-between w-100 h-100">
 												<li class="nav-item py-2 d-none d-xl-inline-flex">
 													<span class="header-top-phone py-2 d-flex align-items-center text-color-primary font-weight-semibold text-uppercase">
-														<i class="icon-location-pin icons text-5 me-2"></i> <span>Jl. Laksdya Leo Wattimena, Negeri Lama - Ambon</span>
+														<i class="icon-location-pin icons text-5 me-2"></i> <span><?= $alamat ?></span>
 													</span>
-													<span class="header-top-email px-0 font-weight-normal d-flex align-items-center"><i class="fas fa-phone text-4"></i>(0911) 362943</span>
-													<span class="header-top-opening-hours px-0 font-weight-normal d-flex align-items-center"><i class="fas fa-fax text-4"></i>(0911) 362949</span>
+													<span class="header-top-email px-0 font-weight-normal d-flex align-items-center"><i class="fas fa-phone text-4"></i><?= $telepon ?></span>
+													<span class="header-top-opening-hours px-0 font-weight-normal d-flex align-items-center"><i class="fas fa-fax text-4"></i><?= $fax ?></span>
 												</li>
 												<li class="nav-item nav-item-header-top-socials d-flex justify-content-between">
-													<!-- <span class="header-top-socials p-0 h-100">
-														<ul class="d-flex align-items-center h-100 p-0">
-															<li class="list-unstyled">
-																<a href="#"><i class="fab fa-instagram text-color-quaternary text-hover-primary"></i></a>
-															</li>
-														</ul>
-													</span> -->
 													<span class="header-top-button-make-as-appoitment d-inline-flex align-items-center justify-content-center h-100 p-0 align-top">
 														<img src="<?= base_url('assets/img/logo-kesehatan.png') ?>" alt="" height="30px" style="margin-right: 20px;">
-														<img src="<?= base_url('assets/img/logo-48.png') ?>" alt="" height="30px">
+														<img src="<?= base_url('assets/img/logo-48.png') ?>" alt="" height="30px" style="margin-right: 20px;">
+														<a href="<?= $this->session->userdata('user_id') ? base_url('auth/dashboard') : base_url('auth/login'); ?>" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none"><?= ( $this->session->userdata('role_id') ? 'Beranda' : 'Login' ) ?></a>
 													</span>
 												</li>
 											</ul>
@@ -67,7 +61,7 @@
 														<ul class="dropdown-menu">
 															<?php foreach ($menu_profiles as $menu_profile) { ?>
 																<li>
-																	<a class="dropdown-item font-weight-normal" href="<?= base_url('dashboard/profile/') . $menu_profile->slug ?>">
+																	<a class="dropdown-item font-weight-normal" href="<?= base_url('dashboard/profile?slug=') . $menu_profile->slug ?>">
 																		<?= $menu_profile->title ?>
 																	</a>
 																</li>
@@ -86,7 +80,7 @@
 														<ul class="dropdown-menu">
 															<?php foreach ($menu_laboratories as $menu_laboratory) { ?>
 																<li>
-																	<a class="dropdown-item font-weight-normal" href="<?= base_url('dashboard/laboratory/') . $menu_laboratory->slug ?>">
+																	<a class="dropdown-item font-weight-normal" href="<?= base_url('dashboard/laboratory?slug=') . $menu_laboratory->slug ?>">
 																		<?= $menu_laboratory->name ?>
 																	</a>
 																</li>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Galleries extends Admin_Controller {
+class Galleries extends Uadmin_Controller {
 	
 	function __construct()
 	{

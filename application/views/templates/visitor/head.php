@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-		<title>Poltekkes Kemenkes Maluku</title>	
+		<title><?= $institut ?></title>	
 
         <link rel="icon" href="<?= base_url('assets/img/logo.png') ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/owl.carousel/assets/owl.carousel.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/owl.carousel/assets/owl.theme.default.min.css">
 		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>vendor/magnific-popup/magnific-popup.min.css">
+		<link rel="stylesheet" href="<?= base_url('assets/') ?>plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
 
 		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/theme.css">
 		<link rel="stylesheet" href="<?= base_url('assets/visitor/') ?>css/theme-elements.css">

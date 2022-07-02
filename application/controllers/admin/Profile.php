@@ -13,6 +13,22 @@ class Profile extends Admin_Controller {
 
 	public function index()
     {
+        $profiles = [
+            (object) ['label' => 'Alamat',  'file' => 'alamat.html',  'file_content' => ''],
+            (object) ['label' => 'Email',   'file' => 'email.html',   'file_content' => ''],
+            (object) ['label' => 'Fax',     'file' => 'fax.html',     'file_content' => ''],
+            (object) ['label' => 'Institut','file' => 'institut.html','file_content' => ''],
+            (object) ['label' => 'Telepon', 'file' => 'telepon.html', 'file_content' => ''],
+        ];
+        $index = 0;
+        foreach ($profiles as $profile) {
+            if( file_exists( './uploads/profile/' . $profile->file ) )
+            {
+                $profiles[$index]->file_content = file_get_contents( './uploads/profile/' . $profile->file );
+            }
+            $index++;
+        }
+
         $datas = $this->profile_model->profile()->result();
         $index = 0;
         foreach ($datas as $data) {
@@ -24,6 +40,7 @@ class Profile extends Admin_Controller {
             $index++;
         }
         
+        $this->data['profiles'] = $profiles;
         $this->data['datas'] = $datas;
         
         $this->data['page'] = 'Profil Poltekkes';

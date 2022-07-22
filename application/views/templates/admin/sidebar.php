@@ -1,7 +1,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="<?= base_url() ?>" class="brand-link">
       <img src="<?= base_url('assets/') ?>img/logo.png" alt="Logo POLTEKKES KEMENKES MALUKU" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Poltekkes</span>
+      <span class="brand-text font-weight-light">PEM</span>
     </a>
 
     <div class="sidebar">
@@ -26,67 +26,51 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/profile') ?>" class="nav-link" id="profile_index">
+            <a href="<?= base_url('admin/kriteria') ?>" class="nav-link" id="kriteria_index">
               <i class="nav-icon fas fa-info-circle"></i>
               <p>
-                Profil
+                Data Kriteria
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/facilities') ?>" class="nav-link" id="facilities_index">
+            <a href="<?= base_url('admin/subkriteria') ?>" class="nav-link" id="subkriteria_index">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Fasilitas
+                Data Subkriteria
               </p>
             </a>
           </li>
           <?php endif; ?>
           <li class="nav-item">
-            <a href="<?= base_url('admin/laboratories') ?>" class="nav-link" id="laboratories_index">
+            <a href="<?= base_url('admin/pasien') ?>" class="nav-link" id="pasien_index">
               <i class="nav-icon fas fa-flask"></i>
               <p>
-                Laboratorium
+                Data Pasien
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/articles') ?>" class="nav-link" id="articles_index">
+            <a href="<?= base_url('admin/penilaian') ?>" class="nav-link" id="penilaian_index">
               <i class="nav-icon fas fa-newspaper"></i>
               <p>
-                Berita
+                Data Penilaian
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/galleries') ?>" class="nav-link" id="galleries_index">
+            <a href="<?= base_url('admin/perhitungan') ?>" class="nav-link" id="perhitungan_index">
               <i class="nav-icon fas fa-image"></i>
               <p>
-                Galeri
+                Data Perhitungan
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('admin/documents') ?>" class="nav-link" id="documents_index">
+            <a href="<?= base_url('admin/hasil') ?>" class="nav-link" id="hasil_index">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Dokumen
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/messages') ?>" class="nav-link" id="messages_index">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Pesan Pengunjung
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/questionnaires') ?>" class="nav-link" id="questionnaires_index">
-              <i class="nav-icon fas fa-question-circle"></i>
-              <p>
-                Kuisioner
+                Data Hasil
               </p>
             </a>
           </li>

@@ -1,6 +1,6 @@
 
     <footer class="main-footer">
-      <strong>POLTEKKES KEMENKES MALUKU &copy; 2022 </strong>
+      <strong>SISTEM PENENTUAN STATUS GIZI BURUK &copy; 2022 </strong>
     </footer>
   </div>
 

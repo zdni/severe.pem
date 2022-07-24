@@ -38,6 +38,12 @@ class Kriteria_model extends CI_Model {
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }
+
+    public function jumlah_bobot()
+    {
+        $this->db->select( 'SUM(' . $this->_table . '.bobot) AS jumlah' );
+        return $this->db->get( $this->_table );
+    }
 }
 
 ?>

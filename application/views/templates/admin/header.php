@@ -1,29 +1,46 @@
-  <div class="wrapper">
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <div class="image" style="margin-top: -5px">
-              <img src="<?= $user_image ?>" class="img-circle elevation-1" alt="User Image" width='35'>
-            </div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">Setting</span>
-            <div class="dropdown-divider"></div>
-            <a href="<?= base_url('profile') ?>" class="dropdown-item">
-              <i class="fas fa-user mr-2"></i> Profil
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="<?= base_url('auth/logout') ?>" class="dropdown-item">
-              <i class="fas fa-sign-out-alt mr-2"></i> Logout
-            </a>
+    <div id="main-wrapper">
+      <div class="nav-header">
+        <a href="index.html" class="brand-logo">
+          <img src="<?= base_url('assets/') ?>img/logo.png" class="logo-abbr">
+        </a>
+        <div class="nav-control">
+          <div class="hamburger">
+            <span class="line"></span><span class="line"></span><span class="line"></span>
           </div>
-        </li>
-      </ul>
-    </nav>
+        </div>
+      </div>
+      <div class="header">
+        <div class="header-content">
+          <nav class="navbar navbar-expand">
+            <div class="collapse navbar-collapse justify-content-between">
+              <div class="header-left">
+                <div class="dashboard_bar">
+                  <?= $page ?>
+                </div>
+              </div>
+
+              <ul class="navbar-nav header-right">
+                <li class="nav-item dropdown header-profile">
+                  <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
+                    <div class="header-info">
+                      <span><?= $name ?></span>
+                      <small>ADMIN</small>
+                    </div>
+                    <img src="<?= $user_image ?>" width="20" alt=""/>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-end">
+                    <a href="<?= base_url('profile') ?>" class="dropdown-item ai-icon">
+                      <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      <span class="ms-2">Profil</span>
+                    </a>
+                    <a href="<?= base_url('auth/logout') ?>" class="dropdown-item ai-icon">
+                      <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                      <span class="ms-2">Keluar</span>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>

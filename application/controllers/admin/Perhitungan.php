@@ -44,6 +44,8 @@ class Perhitungan extends Uadmin_Controller {
         $jumlah_bobot = $this->kriteria_model->jumlah_bobot()->row()->jumlah;
         $alternatif = $this->pasien_model->pasien()->result();
 
+        $jumlah_kriteria = count( $kriteria );
+
         // buat matriks nilai
         foreach ($alternatif as $pas ) {
             $pas->penilaian = [];
@@ -57,6 +59,11 @@ class Perhitungan extends Uadmin_Controller {
                 } else {
                     $total_per_kriteria[$pen->kriteria_id] = $pen->bobot_subkriteria;
                 }
+            }
+            if( $jumlah_kriteria != count( $data ) ) {
+                $this->session->set_flashdata('alert', 'error');
+                $this->session->set_flashdata('message', 'Data Tidak Lengkap! Silahkan Lengkapi Data Terlebih Dahulu');
+                return redirect( base_url( 'admin/perhitungan' ) );
             }
             $matriks_nilai[$pas->nama] = $data;
         }

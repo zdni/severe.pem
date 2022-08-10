@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 28 Jul 2022 pada 13.01
--- Versi Server: 5.7.38-0ubuntu0.18.04.1
--- PHP Version: 7.2.34-28+ubuntu18.04.1+deb.sury.org+1
+-- Generation Time: 10 Agu 2022 pada 08.38
+-- Versi Server: 5.7.39-0ubuntu0.18.04.2
+-- PHP Version: 7.2.34-33+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -51,11 +51,11 @@ CREATE TABLE `kriteria` (
 --
 
 INSERT INTO `kriteria` (`id`, `kode`, `nama`, `bobot`, `jenis`) VALUES
-(7, 'C1', 'Pelayanan Polsek', 25, 'benefit'),
-(8, 'C2', 'Penyelesaian Tindak Pidana (PTP)', 20, 'benefit'),
-(9, 'C3', 'Jumlah Personel', 25, 'benefit'),
-(10, 'C4', 'Kebersihan Polsek', 20, 'benefit'),
-(11, 'C5', 'Jumlah Tindak Pidana (JTP)', 10, 'cost');
+(12, 'C1', 'Lingkar Lengan Atas', 20, 'benefit'),
+(13, 'C2', 'Kehilangan Massa Otot', 30, 'benefit'),
+(14, 'C3', 'Kehilangan Otot Lemak di Dada', 30, 'benefit'),
+(15, 'C4', 'Tinggi Badan', 10, 'cost'),
+(16, 'C5', 'Berat Badan', 10, 'cost');
 
 -- --------------------------------------------------------
 
@@ -73,18 +73,11 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id`, `nama`) VALUES
-(1, 'Polsek Bangun Purba'),
-(3, 'Polsek Batang Kuis'),
-(4, 'Polsek Beringin'),
-(5, 'Polsek Biru-Biru'),
-(6, 'Polsek Galang'),
-(7, 'Polsek Gunung Meriah'),
-(8, 'Polsek Lubuk Pakam'),
-(9, 'Polsek Namo Rambe'),
-(10, 'Polsek Pagar Merbau'),
-(11, 'Polsek Talun Kenas'),
-(12, 'Polsek Tanjung Morawa'),
-(13, 'Polsek Tiga Juhar');
+(14, 'Ny. Hayan'),
+(15, 'Ny. Ratnia'),
+(16, 'Tn. Kaerudin'),
+(17, 'Tn. Bangun'),
+(18, 'Ny. Saharia');
 
 -- --------------------------------------------------------
 
@@ -99,72 +92,6 @@ CREATE TABLE `penilaian` (
   `subkriteria_id` int(11) NOT NULL,
   `sequence` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `penilaian`
---
-
-INSERT INTO `penilaian` (`id`, `pasien_id`, `kriteria_id`, `subkriteria_id`, `sequence`) VALUES
-(1, 1, 7, 16, 1),
-(2, 1, 8, 20, 1),
-(3, 1, 9, 32, 1),
-(4, 1, 10, 45, 1),
-(5, 1, 11, 49, 1),
-(6, 3, 7, 16, 1),
-(7, 3, 8, 21, 1),
-(8, 3, 9, 34, 1),
-(9, 3, 10, 45, 1),
-(10, 3, 11, 50, 1),
-(11, 4, 7, 16, 1),
-(12, 4, 8, 22, 1),
-(13, 4, 9, 35, 1),
-(14, 4, 10, 45, 1),
-(15, 4, 11, 51, 1),
-(16, 5, 7, 16, 1),
-(17, 5, 8, 23, 1),
-(18, 5, 9, 36, 1),
-(19, 5, 10, 45, 1),
-(20, 5, 11, 52, 1),
-(21, 6, 7, 16, 1),
-(22, 6, 8, 24, 1),
-(23, 6, 9, 33, 1),
-(24, 6, 10, 45, 1),
-(25, 6, 11, 53, 1),
-(26, 7, 7, 16, 1),
-(27, 7, 8, 25, 1),
-(28, 7, 9, 37, 1),
-(29, 7, 10, 45, 1),
-(30, 7, 11, 54, 1),
-(31, 8, 7, 16, 1),
-(32, 8, 8, 26, 1),
-(33, 8, 9, 38, 1),
-(34, 8, 10, 45, 1),
-(35, 8, 11, 55, 1),
-(36, 9, 7, 16, 1),
-(37, 9, 8, 27, 1),
-(38, 9, 9, 39, 1),
-(39, 9, 10, 45, 1),
-(40, 9, 11, 56, 1),
-(41, 10, 7, 16, 1),
-(42, 10, 8, 28, 1),
-(43, 10, 9, 40, 1),
-(44, 10, 10, 45, 1),
-(45, 10, 11, 57, 1),
-(46, 11, 7, 16, 1),
-(47, 11, 8, 29, 1),
-(48, 11, 9, 41, 1),
-(49, 11, 10, 45, 1),
-(50, 11, 11, 58, 1),
-(51, 12, 7, 16, 1),
-(52, 12, 8, 30, 1),
-(53, 12, 9, 42, 1),
-(54, 12, 10, 45, 1),
-(55, 12, 11, 59, 1),
-(56, 13, 7, 16, 1),
-(57, 13, 8, 31, 1),
-(58, 13, 9, 43, 1),
-(59, 13, 10, 45, 1),
-(60, 13, 11, 60, 1);
 
 -- --------------------------------------------------------
 
@@ -203,52 +130,19 @@ CREATE TABLE `subkriteria` (
 --
 
 INSERT INTO `subkriteria` (`id`, `kriteria_id`, `nilai`, `keterangan`, `bobot`) VALUES
-(15, 7, '81-100', 'SB', 4),
-(16, 7, '61-80', 'B', 3),
-(17, 7, '41-60', 'CB', 2),
-(18, 7, '21-40', 'KB', 1),
-(19, 7, '0-20', 'STB', 0),
-(20, 8, '15', '-', 15),
-(21, 8, '54', '-', 54),
-(22, 8, '78', '-', 78),
-(23, 8, '31', '-', 31),
-(24, 8, '47', '-', 47),
-(25, 8, '0', '-', 0),
-(26, 8, '48', '-', 48),
-(27, 8, '34', '-', 34),
-(28, 8, '22', '-', 22),
-(29, 8, '28', '-', 28),
-(30, 8, '78', '-', 78),
-(31, 8, '10', '-', 10),
-(32, 9, '40 orang', '-', 40),
-(33, 9, '51 orang', '-', 51),
-(34, 9, '63 orang', '-', 63),
-(35, 9, '69 orang', '-', 69),
-(36, 9, '41 orang', '-', 41),
-(37, 9, '25 orang', '-', 25),
-(38, 9, '44 orang', '-', 44),
-(39, 9, '59 orang', '-', 59),
-(40, 9, '37 orang', '-', 37),
-(41, 9, '36 orang', '-', 36),
-(42, 9, '69 orang', '-', 69),
-(43, 9, '29 orang', '-', 29),
-(44, 10, '80-100', 'SB', 4),
-(45, 10, '60-79', 'B', 3),
-(46, 10, '40-59', 'CB', 2),
-(47, 10, '21-39', 'KB', 1),
-(48, 10, '0-20', 'TB', 0),
-(49, 11, '18', '-', 18),
-(50, 11, '83', '-', 83),
-(51, 11, '101', '-', 101),
-(52, 11, '46', '-', 46),
-(53, 11, '81', '-', 81),
-(54, 11, '0', '-', 0),
-(55, 11, '95', '-', 95),
-(56, 11, '48', '-', 48),
-(57, 11, '35', '-', 35),
-(58, 11, '47', '-', 47),
-(59, 11, '90', '-', 90),
-(60, 11, '15', '-', 15);
+(61, 12, '23-22', 'Buruk', 1),
+(62, 12, '19-21,9', 'Buruk', 2),
+(63, 12, '<19', 'Cukup', 3),
+(64, 13, 'Wasting Tidak Bergelambir', 'Buruk', 1),
+(65, 13, 'Wasting Bergelambir', 'Cukup', 2),
+(66, 14, 'Tidak Kehilangan Otot Lemak Dada', 'Buruk', 1),
+(67, 14, 'Kehilangan Otot Lemak Dada', 'Cukup', 2),
+(68, 15, '165 - 160 cm', 'Buruk', 1),
+(69, 15, '150 - 155 cm', 'Kurang', 2),
+(70, 15, '140 - 145 cm', 'Cukup', 3),
+(71, 16, '17,9 - 18 kg', 'Buruk', 1),
+(72, 16, '16 - 17 kg', 'Kurang', 2),
+(73, 16, '<14,9 kg', 'Cukup', 3);
 
 -- --------------------------------------------------------
 
@@ -336,12 +230,12 @@ ALTER TABLE `hasil`
 -- AUTO_INCREMENT for table `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `penilaian`
 --
@@ -356,7 +250,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `subkriteria`
 --
 ALTER TABLE `subkriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
 -- AUTO_INCREMENT for table `users`
 --

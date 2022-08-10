@@ -1,80 +1,50 @@
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="<?= base_url() ?>" class="brand-link">
-      <img src="<?= base_url('assets/') ?>img/logo.png" alt="Logo POLTEKKES KEMENKES MALUKU" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">PEM</span>
-    </a>
-
-    <div class="sidebar">
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="<?= $user_image ?>" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="<?= base_url('profile') ?>" class="d-block"><?= $name ?></a>
-        </div>
-      </div>
-
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-          <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/dashboard') ?>" class="nav-link" id="dashboard_index">
-              <i class="nav-icon fas fa-columns"></i>
-              <p>
-                Beranda
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/kriteria') ?>" class="nav-link" id="kriteria_index">
-              <i class="nav-icon fas fa-info-circle"></i>
-              <p>
-                Data Kriteria
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/subkriteria') ?>" class="nav-link" id="subkriteria_index">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Data Subkriteria
-              </p>
-            </a>
-          </li>
-          <?php endif; ?>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/pasien') ?>" class="nav-link" id="pasien_index">
-              <i class="nav-icon fas fa-flask"></i>
-              <p>
-                Data Pasien
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/penilaian') ?>" class="nav-link" id="penilaian_index">
-              <i class="nav-icon fas fa-newspaper"></i>
-              <p>
-                Data Penilaian
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/perhitungan') ?>" class="nav-link" id="perhitungan_index">
-              <i class="nav-icon fas fa-image"></i>
-              <p>
-                Data Perhitungan
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="<?= base_url('admin/hasil') ?>" class="nav-link" id="hasil_index">
-              <i class="nav-icon fas fa-copy"></i>
-              <p>
-                Data Hasil
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
+  <div class="deznav">
+    <div class="deznav-scroll">
+      <ul class="metismenu" id="menu">
+        <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
+        <li>
+          <a href="<?= base_url('admin/dashboard') ?>" class="ai-icon" aria-expanded="false" id="dashboard_index">
+            <i class="flaticon-381-blueprint"></i>
+            <span class="nav-text">Beranda</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/kriteria') ?>" class="ai-icon" aria-expanded="false" id="kriteria_index">
+            <i class="flaticon-381-reading"></i>
+            <span class="nav-text">Data Kriteria</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/subkriteria') ?>" class="ai-icon" aria-expanded="false" id="subkriteria_index">
+            <i class="flaticon-381-pad"></i>
+            <span class="nav-text">Data Subkriteria</span>
+          </a>
+        </li>
+        <?php endif; ?>
+        <li>
+          <a href="<?= base_url('admin/pasien') ?>" class="ai-icon" aria-expanded="false" id="pasien_index">
+            <i class="flaticon-381-user-8"></i>
+            <span class="nav-text">Data Pasien</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/penilaian') ?>" class="ai-icon" aria-expanded="false" id="penilaian_index">
+            <i class="flaticon-381-list-1"></i>
+            <span class="nav-text">Data Penilaian</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/perhitungan') ?>" class="ai-icon" aria-expanded="false" id="perhitungan_index">
+            <i class="flaticon-381-notepad"></i>
+            <span class="nav-text">Data Perhitungan</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?= base_url('admin/hasil') ?>" class="ai-icon" aria-expanded="false" id="hasil_index">
+            <i class="flaticon-381-resume"></i>
+            <span class="nav-text">Data Hasil</span>
+          </a>
+        </li>
+      </ul>
     </div>
-  </aside>
+  </div>

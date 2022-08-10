@@ -1,50 +1,69 @@
-    <div class="content-wrapper">
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0"><?= $page ?></h1>
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="form-head d-flex align-items-start flex-wrap justify-content-between">
+      <div class="me-auto d-lg-block">
+        <h3 class="text-primary font-w600">Selamat Datang</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-xxl-6">
+        <div class="row">
+          <div class="col-xl-6 col-lg-3 col-sm-6">
+            <div class="app-stat card bg-danger">
+              <div class="card-body  p-4">
+                <div class="media flex-wrap">
+                  <span class="me-3">
+                    <i class="flaticon-381-reading"></i>
+                  </span>
+                  <div class="media-body text-white text-end">
+                    <p class="mb-1">Data Kriteria</p>
+                    <h3 class="text-white"><?= $kriteria ?></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>	
+          <div class="col-xl-6 col-lg-3 col-sm-6">
+            <div class="app-stat card bg-success">
+              <div class="card-body p-4">
+                <div class="media flex-wrap">
+                  <span class="me-3">
+                    <i class="flaticon-381-user-8"></i>
+                  </span>
+                  <div class="media-body text-white text-end">
+                    <p class="mb-1 text-nowrap">Data Pasien</p>
+                    <h3 class="text-white"><?= $pasien ?></h3>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-      <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
-              <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Kriteria</span>
-                  <span class="info-box-number"><?= $kriteria ?></span>
+          <div class="col-xl-6 col-lg-3 col-sm-6">
+            <div class="app-stat card bg-info">
+              <div class="card-body p-4">
+                <div class="media flex-wrap">
+                  <span class="me-3">
+                    <i class="flaticon-381-list-1"></i>
+                  </span>
+                  <div class="media-body text-white text-end">
+                    <p class="mb-1 text-nowrap">Data Penilaian</p>
+                    <h3 class="text-white"><?= $penilaian ?></h3>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
-              <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Pasien</span>
-                  <span class="info-box-number"><?= $pasien ?></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
-              <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Penilaian</span>
-                  <span class="info-box-number"><?= $penilaian ?></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-lg-3 col-md-3 col-sm-12">
-              <div class="info-box shadow-sm">
-                <span class="info-box-icon bg-success"><i class="far fa-flag"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Data Subkriteria</span>
-                  <span class="info-box-number"><?= $subkriteria ?></span>
+          </div>
+          <div class="col-xl-6 col-lg-3 col-sm-6">
+            <div class="app-stat card bg-primary">
+              <div class="card-body p-4">
+                <div class="media flex-wrap">
+                  <span class="me-3">
+                    <i class="flaticon-381-pad"></i>
+                  </span>
+                  <div class="media-body text-white text-end">
+                    <p class="mb-1">Data Subkriteria</p>
+                    <h3 class="text-white"><?= $subkriteria ?></h3>
+                  </div>
                 </div>
               </div>
             </div>
@@ -52,3 +71,5 @@
         </div>
       </div>
     </div>
+  </div>
+</div>

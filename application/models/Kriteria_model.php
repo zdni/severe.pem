@@ -44,6 +44,12 @@ class Kriteria_model extends CI_Model {
         $this->db->select( 'SUM(' . $this->_table . '.bobot) AS jumlah' );
         return $this->db->get( $this->_table );
     }
+
+    public function kriteria_berdasarkan_inputan( $inputan )
+    {
+        $this->db->where('tipe', $inputan);
+        return $this->kriteria();
+    }
 }
 
 ?>

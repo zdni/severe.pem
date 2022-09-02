@@ -10,6 +10,7 @@
   
   <link href="<?= base_url('assets/') ?>vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
 	<link href="<?= base_url('assets/') ?>vendor/chartist/css/chartist.min.css" rel="stylesheet">
+  <link href="<?= base_url('assets/') ?>vendor/summernote/summernote.css" rel="stylesheet">
 	<link href="<?= base_url('assets/') ?>vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/') ?>vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/') ?>vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">

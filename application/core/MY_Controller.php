@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller {
 
     protected function render( $view = NULL, $template = NULL ) {
         if( is_null( $template ) ) {
-            $this->load->view( $iview, $this->data );
+            $this->load->view( $view, $this->data );
         } else {
             $this->data['view_content'] = ( is_null( $view ) ) ? '' : $this->load->view( $view, $this->data, TRUE );
             $this->load->view( 'templates/' . $template . '_template', $this->data );
@@ -55,7 +55,7 @@ class Admin_Controller extends User_Controller
 	    parent::__construct();
   	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin'] ) ) ){
             $this->session->set_flashdata('alert', 'error' );
-            redirect( base_url('/admin/laboratories') );
+            redirect( base_url('/admin/dashboard') );
   	    }
     }
 
@@ -68,8 +68,7 @@ class Uadmin_Controller extends User_Controller
 	    parent::__construct();
   	    if( !( in_array( $this->session->userdata( 'role_name' ), ['admin', 'uadmin'] ) ) ){
             $this->session->set_flashdata('alert', 'error' );
-            redirect( base_url('/auth/login') );
+            redirect( base_url('/admin/dashboard') );
   	    }
     }
-
 }

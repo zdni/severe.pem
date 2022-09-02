@@ -44,6 +44,7 @@
                   <td><?= $number ?></td>
                   <td><?= $data->nama ?></td>
                   <td>
+                    <a href="<?= base_url('admin/pasien/detail/') . $data->id ?>" class="btn btn-xs btn-outline-info">Detail</a>
                     <button class="btn btn-xs btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-ubah-pasien-<?= $data->id ?>">Ubah</button>
                     <div class="modal fade" id="modal-ubah-pasien-<?= $data->id ?>">
                       <div class="modal-dialog" role="document">

@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SISTEM PENENTUAN STATUS GIZI BURUK</title>
+    
     <link rel="icon" href="<?= base_url('assets/img/logo.png') ?>">
     <link href="<?= base_url('assets/') ?>css/style.css" rel="stylesheet">
+    <link href="<?= base_url('assets/') ?>vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
   </head>
   <body class="vh-100">
     <div class="authincation h-100">
@@ -29,6 +31,7 @@
                       </div>
                       <div class="text-center">
                         <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+                        <a href="<?= base_url('auth/daftar') ?>" class="btn btn-default btn-block">Daftar</a>
                       </div>
                     </form>
                   </div>
@@ -43,5 +46,12 @@
     <script src="<?= base_url('assets/') ?>vendor/global/global.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/custom.min.js"></script>
     <script src="<?= base_url('assets/') ?>js/deznav-init.js"></script>
+    <script src="<?= base_url('assets/') ?>vendor/sweetalert2/dist/sweetalert2.min.js"></script>
+
+    <script>
+      if( '<?= $this->session->flashdata('alert') ?>' == 'success' ) Swal.fire( 'Berhasil!', '<?= $this->session->flashdata('message') ?>', 'success' );
+      if( '<?= $this->session->flashdata('alert') ?>' == 'warning' ) Swal.fire( 'Peringatan!', '<?= $this->session->flashdata('message') ?>', 'warning' );
+      if( '<?= $this->session->flashdata('alert') ?>' == 'error' ) Swal.fire( 'Gagal!', '<?= $this->session->flashdata('message') ?>', 'error' );
+    </script>
 </body>
 </html>

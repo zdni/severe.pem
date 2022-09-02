@@ -46,6 +46,8 @@ class Penilaian_model extends CI_Model {
         $this->db->select( 'pasien.nama AS pasien' );
         $this->db->select( 'kriteria.nama AS kriteria' );
         $this->db->select( 'kriteria.bobot AS bobot_kriteria' );
+        $this->db->select( 'kriteria.tipe AS tipe_kriteria' );
+        $this->db->select( 'subkriteria.keterangan AS keterangan' );
         $this->db->select( 'subkriteria.nilai AS subkriteria' );
         $this->db->select( 'subkriteria.bobot AS bobot_subkriteria' );
         $this->db->join(

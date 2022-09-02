@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Hasil extends Uadmin_Controller {
+class Hasil extends User_Controller {
 	
 	function __construct()
 	{

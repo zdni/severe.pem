@@ -6,6 +6,7 @@
       </div>
     </div>
     <div class="row">
+      <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
       <div class="col-xl-6 col-xxl-6">
         <div class="row">
           <div class="col-xl-6 col-lg-3 col-sm-6">
@@ -66,6 +67,27 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php endif; ?>
+      <div class="col-xl-6 col-xxl-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Hitung Indek Massa Tubuh (IMT)</h3>
+          </div>
+          <div class="card-body" id="card-imt">
+            <div class="form-group">
+              <label for="">Berat Badan (kg)</label>
+              <input type="number" name="bb" id="bb" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="">Tinggi Badan (cm)</label>
+              <input type="number" name="tb" id="tb" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-sm btn-primary" id="btn-hitung-imt">Hitung IMT</button>
             </div>
           </div>
         </div>

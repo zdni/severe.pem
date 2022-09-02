@@ -1,6 +1,6 @@
     <div id="main-wrapper">
       <div class="nav-header">
-        <a href="index.html" class="brand-logo">
+        <a href="<?= base_url() ?>" class="brand-logo">
           <img src="<?= base_url('assets/') ?>img/logo.png" class="logo-abbr">
         </a>
         <div class="nav-control">

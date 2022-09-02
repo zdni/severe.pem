@@ -8,6 +8,7 @@ class Pasien extends Uadmin_Controller {
         parent::__construct();
         $this->load->model([
             'pasien_model',
+            'penilaian_model'
         ]);
         $this->data['menu_id'] = 'pasien_index';
 	}
@@ -43,6 +44,18 @@ class Pasien extends Uadmin_Controller {
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
         return redirect( base_url('admin/pasien') );
+    }
+
+    public function detail( $pasien_id )
+    {
+        if( !$pasien_id ) return redirect( base_url('admin/pasien') );
+
+        $this->data['pasien'] = $this->pasien_model->pasien( $pasien_id )->row();
+        $this->data['datas'] = $this->penilaian_model->penilaian( NULL, $pasien_id )->result();
+        
+        $this->data['page'] = 'Detail Pasien';
+        $this->render('admin/detail_pasien');
+
     }
 
     public function ubah()

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Perhitungan extends Uadmin_Controller {
+class Perhitungan extends User_Controller {
 	
 	function __construct()
 	{

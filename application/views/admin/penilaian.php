@@ -20,16 +20,25 @@
                       <?php foreach ($pasien as $pas) { ?>
                         <option value="<?= $pas->id ?>"><?= $pas->nama ?></option>
                       <?php } ?>
-                    </select>
+                    </select> 
                   </div>
                   <?php foreach ($kriteria as $kri) { ?>
                     <div class="form-group">
                       <label for=""><?= $kri->nama ?></label>
-                      <select name="kriteria_id[]" id="kriteria_id[]" class="form-control" required>
-                      <?php foreach ($kri->subdatas as $subkriteria) { ?>
-                        <option value="<?= $kri->id . ':' . $subkriteria->id ?>"><?= $subkriteria->nilai ?></option>
-                      <?php } ?>
-                      </select>
+                      <div class="row">
+                        <div class="col">
+                          <select name="kriteria_id[]" id="kriteria_id[]" class="form-control" required>
+                          <?php foreach ($kri->subdatas as $subkriteria) { ?>
+                            <option value="<?= $kri->id . ':' . $subkriteria->id ?>"><?= $subkriteria->nilai ?></option>
+                          <?php } ?>
+                          </select>
+                        </div>
+                        <?php if( $kri->tipe == 2 ): ?>
+                          <div class="col">
+                            <input type="text" class="form-control" name="manual_value[<?= $kri->id ?>]" id="manual_value[<?= $kri->id ?>]" required>
+                          </div>
+                        <?php endif;?>
+                      </div>
                     </div>
                   <?php } ?>
                 </div>
@@ -60,8 +69,15 @@
                 <tr>
                   <td><?= $number ?></td>
                   <td><?= $data->nama ?></td>
-                  <?php foreach ($kriteria as $kri) { ?>
-                    <td><?= $data->penilaian[$kri->id] ?></td>
+                  <?php foreach ($kriteria as $kri) {
+                      $_penilaian = $nilai_sub = $data->penilaian[$kri->id];
+                      if( $kri->tipe == 2 ) {
+                        $_data = explode(':', $data->penilaian[$kri->id]);
+                        $_penilaian = $_data[0];
+                        $nilai_sub = $_data[1];
+                      }
+                    ?>
+                    <td><?= $_penilaian ?></td>
                   <?php } ?>
                   <td>
                     <button class="btn btn-xs btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-ubah-penilaian-<?= $data->id ?>">Ubah</button>
@@ -80,14 +96,30 @@
                                 <label for="">Nama</label>
                                 <input type="text" class="form-control" name="nama" id="nama" value="<?= $data->nama ?>" disabled>
                               </div>
-                              <?php foreach ($kriteria as $kri) { ?>
+                              <?php foreach ($kriteria as $kri) { 
+                                $_penilaian = $nilai_sub = $data->penilaian[$kri->id];
+                                if( $kri->tipe == 2 ) {
+                                  $_data = explode(':', $data->penilaian[$kri->id]);
+                                  $_penilaian = $_data[0];
+                                  $nilai_sub = $_data[1];
+                                }
+                                ?>
                                 <div class="form-group">
                                   <label for=""><?= $kri->nama ?></label>
-                                  <select name="kriteria_id[]" id="kriteria_id[]" class="form-control" required>
-                                  <?php foreach ($kri->subdatas as $subkriteria) { ?>
-                                    <option <?php if($subkriteria->nilai == $data->penilaian[$kri->id]) echo 'selected'; ?>  value="<?= $kri->id . ':' . $subkriteria->id ?>"><?= $subkriteria->nilai ?></option>
-                                  <?php } ?>
-                                  </select>
+                                  <div class="row">
+                                    <div class="col">
+                                      <select name="kriteria_id[]" id="kriteria_id[]" class="form-control" required>
+                                      <?php foreach ($kri->subdatas as $subkriteria) { ?>
+                                        <option <?php if($subkriteria->nilai == $nilai_sub) echo 'selected'; ?>  value="<?= $kri->id . ':' . $subkriteria->id ?>"><?= $subkriteria->nilai ?></option>
+                                      <?php } ?>
+                                      </select>
+                                    </div>
+                                    <?php if( $kri->tipe == 2 ): ?>
+                                      <div class="col">
+                                        <input type="text" class="form-control" name="manual_value[<?= $kri->id ?>]" id="manual_value[<?= $kri->id ?>]" required value="<?= $_penilaian ?>">
+                                      </div>
+                                    <?php endif;?>
+                                  </div>
                                 </div>
                               <?php } ?>
                             </div>

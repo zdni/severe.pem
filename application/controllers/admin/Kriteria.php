@@ -34,11 +34,13 @@ class Kriteria extends Uadmin_Controller {
             $nama = $this->input->post('nama');
             $bobot = $this->input->post('bobot');
             $jenis = $this->input->post('jenis');
+            $tipe = $this->input->post('tipe');
 
             $data['kode'] = $kode;
             $data['nama'] = $nama;
             $data['bobot'] = $bobot;
             $data['jenis'] = $jenis;
+            $data['tipe'] = $tipe;
         
             if( $this->kriteria_model->tambah( $data ) )
             {
@@ -70,11 +72,13 @@ class Kriteria extends Uadmin_Controller {
             $nama = $this->input->post('nama');
             $bobot = $this->input->post('bobot');
             $jenis = $this->input->post('jenis');
+            $tipe = $this->input->post('tipe');
 
             $data['kode'] = $kode;
             $data['nama'] = $nama;
             $data['bobot'] = $bobot;
             $data['jenis'] = $jenis;
+            $data['tipe'] = $tipe;
         
             if( $this->kriteria_model->ubah( $id, $data ) )
             {

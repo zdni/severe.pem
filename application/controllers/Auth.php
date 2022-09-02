@@ -11,6 +11,67 @@ class Auth extends CI_Controller {
         ]);
 	}
 
+    public function daftar()
+    {
+        return $this->load->view('daftar');
+    }
+
+    public function register()
+    {
+        $this->form_validation->set_rules('name', 'Nama', 'required');
+        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
+        $this->form_validation->set_rules('confirm_password', 'Konfirmasi Password', 'required|trim');
+
+        $alert = 'error';
+        $message = 'Gagal Mendaftarkan Akun! Silahkan isi semua inputan';
+        $url = 'auth/daftar';
+        
+        if ( $this->form_validation->run() == true )
+        {
+            $name = $this->input->post('name');
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            $confirm_password = $this->input->post('confirm_password');
+            
+            if( $password != $confirm_password ) {
+                $message = 'Password dan Konfirmasi Password tidak cocok! Silahkan ulangi';
+                
+                $this->session->set_flashdata('alert', $alert);   
+                $this->session->set_flashdata('message', $message);  
+                return redirect( base_url( $url ) );
+            }
+            
+            $user = $this->users_model->user( NULL, $username )->row();
+            if( $user ) {
+                
+                $message = 'Username telah digunakan! Silahkan menggunakan username lain!';
+                $this->session->set_flashdata('alert', $alert);   
+                $this->session->set_flashdata('message', $message);  
+                return redirect( base_url( $url ) );
+            }
+            
+            $data['username'] = $username;
+            $data['name'] = $name;
+            $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+            $data['role_id'] = 3;
+            
+            if( $this->users_model->create( $data ) )
+            {
+                $alert = 'success';
+                $message = 'Berhasil Mendaftarkan Akun! Silahkan login';
+                $url = 'auth/login';
+            } else {
+                $message = 'Gagal Mendaftarkan Akun!';
+                $url = 'auth/daftar';
+            }
+        }
+        
+        $this->session->set_flashdata('alert', $alert);   
+        $this->session->set_flashdata('message', $message);  
+        return redirect( base_url( $url ) );
+    }
+
 	public function login()
     {
         // cek apakah user sudah login
@@ -45,19 +106,11 @@ class Auth extends CI_Controller {
                         'laboratory_id' => $user->laboratory_id,
                     ];
 
-                    if ( $user->role_name == 'admin' ) {
-                        $path = 'admin/dashboard';
-                    }
-
-                    if ( $user->role_name == 'uadmin' ) {
-                        $path = 'admin/laboratories';
-                    }
-
                     $this->session->set_userdata( $session );
                     $this->session->set_flashdata('alert', 'success');   
                     $this->session->set_flashdata('message', 'Login Berhasil');   
                     
-                    return redirect( base_url() . $path );
+                    return redirect( base_url('admin/dashboard') );
                 } else {
                     $alert = 'warning';
                     $message = 'Login Gagal! Password yang anda masukkan salah';

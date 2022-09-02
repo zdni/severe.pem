@@ -33,6 +33,13 @@
                       <option value="cost"><i>Cost</i></option>
                     </select>
                   </div>
+                  <div class="form-group">
+                    <label for="">Tipe Inputan</label>
+                    <select name="tipe" id="tipe" class="form-control">
+                      <option value="1"><i>Selection</i></option>
+                      <option value="2"><i>Manual</i></option>
+                    </select>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-xs btn-danger light" data-bs-dismiss="modal">Batal</button>
@@ -56,17 +63,19 @@
                   <th>Nama Kriteria</th>
                   <th>Bobot</th>
                   <th>Jenis</th>
+                  <th>Inputan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
-                <?php $number = 1; foreach ($datas as $data) {  ?>
+                <?php $inputan = ['', 'Selection', 'Manual']; $number = 1; foreach ($datas as $data) {  ?>
                   <tr>
                     <td><?= $number ?></td>
                     <td><?= $data->kode ?></td>
                     <td><?= $data->nama ?></td>
                     <td><?= $data->bobot ?></td>
                     <td><i><?= ucwords($data->jenis); ?></i></td>
+                    <td><?= $inputan[$data->tipe] ?></td>
                     <td>
                     <button class="btn btn-xs btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-ubah-kriteria-<?= $data->id ?>">Ubah</button>
                       <div class="modal fade" id="modal-ubah-kriteria-<?= $data->id ?>">
@@ -97,6 +106,13 @@
                                   <select name="jenis" id="jenis" class="form-control">
                                     <option <?php if( $data->jenis == 'benefit' ) echo 'selected'; ?> value="benefit">Benefit</option>
                                     <option <?php if( $data->jenis == 'cost' ) echo 'selected'; ?> value="cost">Cost</option>
+                                  </select>
+                                </div>
+                                <div class="form-group">
+                                  <label for="">Tipe Inputan</label>
+                                  <select name="tipe" id="tipe" class="form-control">
+                                    <option <?php if( $data->tipe == 1 ) echo 'selected'; ?> value="1"><i>Selection</i></option>
+                                    <option <?php if( $data->tipe == 2 ) echo 'selected'; ?> value="2"><i>Manual</i></option>
                                   </select>
                                 </div>
                               </div>

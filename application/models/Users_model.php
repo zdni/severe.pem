@@ -43,12 +43,6 @@ class Users_model extends CI_Model {
         return $this->users();
     }
 
-    public function users_laboratory( $laboratory_id = NULL )
-    {
-        if ($laboratory_id) $this->db->where( $this->_table . '.laboratory_id', $laboratory_id );
-        return $this->users();
-    }
-
     public function users(  )
     {
         $this->db->select( $this->_table . '.*' );

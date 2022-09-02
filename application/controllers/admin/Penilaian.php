@@ -27,8 +27,11 @@ class Penilaian extends Uadmin_Controller {
         foreach ($_pasien as $pas ) {
             $pas->penilaian = [];
             $penilaian = $this->penilaian_model->penilaian( NULL, $pas->id )->result();
+            // print_r( $penilaian );
+            // die;
             foreach ($penilaian as $pen) {
                 $pas->penilaian[$pen->kriteria_id] = $pen->subkriteria;
+                if( $pen->tipe_kriteria == 2 )  $pas->penilaian[$pen->kriteria_id] = $pen->manual_value . ':' . $pen->subkriteria;
             }
             if( $pas->penilaian != [] ) {
                 $datas[] = $pas;
@@ -46,6 +49,7 @@ class Penilaian extends Uadmin_Controller {
     {
         $this->form_validation->set_rules('pasien_id', 'Kode penilaian', 'required');
         // $this->form_validation->set_rules('kriteria_id', 'Nama penilaian', 'required');
+        $kriteria_manual = $this->kriteria_model->kriteria_berdasarkan_inputan( 2 )->result();
 
         $alert = 'error';
         $message = 'Gagal Menambah Data Penilaian Baru! <br> Silahkan isi semua inputan!';
@@ -53,16 +57,21 @@ class Penilaian extends Uadmin_Controller {
         {
             $pasien_id = $this->input->post('pasien_id');
             $kriteria = $this->input->post('kriteria_id');
-
+            $manual_value = $this->input->post('manual_value');
             foreach ($kriteria as $kri) {
+                $man_val = NULL;
                 $_data = explode(':', $kri);
+                if( key_exists($_data[0], $manual_value) ) {
+                    $man_val = $manual_value[$_data[0]];
+                } 
                 $data[] = [
                     'pasien_id' => $pasien_id,
                     'kriteria_id' => $_data[0],
                     'subkriteria_id' => $_data[1],
+                    'manual_value' => $man_val,
                 ];
             }
-
+            
             if( $this->penilaian_model->tambah_batch( $data ) )
             {
                 $alert = 'success';
@@ -87,9 +96,16 @@ class Penilaian extends Uadmin_Controller {
         {
             $pasien_id = $this->input->post('pasien_id');
             $kriteria = $this->input->post('kriteria_id');
+            $manual_value = $this->input->post('manual_value');
             foreach ($kriteria as $kri) {
+                $man_val = NULL;
                 $_data = explode(':', $kri);
                 $data['subkriteria_id'] = $_data[1];
+                if( key_exists($_data[0], $manual_value) ) {
+                    $man_val = $manual_value[$_data[0]];
+                }
+                $data['manual_value'] = $man_val;
+                
                 if( $this->penilaian_model->ubah( $pasien_id, $_data[0], $data ) )
                 {
                     $alert = 'success';

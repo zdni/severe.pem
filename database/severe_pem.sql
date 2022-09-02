@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5ubuntu0.5
+-- version 5.1.1deb5ubuntu1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 10 Agu 2022 pada 08.38
--- Versi Server: 5.7.39-0ubuntu0.18.04.2
--- PHP Version: 7.2.34-33+ubuntu18.04.1+deb.sury.org+1
+-- Waktu pembuatan: 02 Sep 2022 pada 08.00
+-- Versi server: 8.0.30-0ubuntu0.22.04.1
+-- Versi PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,11 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `gizi`
+--
+
+CREATE TABLE `gizi` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `foto` text NOT NULL,
+  `keterangan` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `gizi`
+--
+
+INSERT INTO `gizi` (`id`, `title`, `foto`, `keterangan`) VALUES
+(2, 'tes', 'tes.jpeg', 'tes');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `hasil`
 --
 
 CREATE TABLE `hasil` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `tanggal` date NOT NULL,
   `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -39,23 +60,24 @@ CREATE TABLE `hasil` (
 --
 
 CREATE TABLE `kriteria` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `kode` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `bobot` int(11) NOT NULL,
-  `jenis` varchar(255) NOT NULL
+  `bobot` int NOT NULL,
+  `jenis` varchar(255) NOT NULL,
+  `tipe` int NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kriteria`
 --
 
-INSERT INTO `kriteria` (`id`, `kode`, `nama`, `bobot`, `jenis`) VALUES
-(12, 'C1', 'Lingkar Lengan Atas', 20, 'benefit'),
-(13, 'C2', 'Kehilangan Massa Otot', 30, 'benefit'),
-(14, 'C3', 'Kehilangan Otot Lemak di Dada', 30, 'benefit'),
-(15, 'C4', 'Tinggi Badan', 10, 'cost'),
-(16, 'C5', 'Berat Badan', 10, 'cost');
+INSERT INTO `kriteria` (`id`, `kode`, `nama`, `bobot`, `jenis`, `tipe`) VALUES
+(12, 'C1', 'Lingkar Lengan Atas', 20, 'benefit', 2),
+(13, 'C2', 'Kehilangan Massa Otot', 30, 'benefit', 1),
+(14, 'C3', 'Kehilangan Otot Lemak di Dada', 30, 'benefit', 1),
+(15, 'C4', 'Tinggi Badan', 10, 'cost', 2),
+(16, 'C5', 'Berat Badan', 10, 'cost', 2);
 
 -- --------------------------------------------------------
 
@@ -64,7 +86,7 @@ INSERT INTO `kriteria` (`id`, `kode`, `nama`, `bobot`, `jenis`) VALUES
 --
 
 CREATE TABLE `pasien` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `nama` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -86,12 +108,24 @@ INSERT INTO `pasien` (`id`, `nama`) VALUES
 --
 
 CREATE TABLE `penilaian` (
-  `id` int(11) NOT NULL,
-  `pasien_id` int(11) NOT NULL,
-  `kriteria_id` int(11) NOT NULL,
-  `subkriteria_id` int(11) NOT NULL,
-  `sequence` int(11) NOT NULL DEFAULT '1'
+  `id` int NOT NULL,
+  `pasien_id` int NOT NULL,
+  `kriteria_id` int NOT NULL,
+  `subkriteria_id` int NOT NULL,
+  `sequence` int NOT NULL DEFAULT '1',
+  `manual_value` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `penilaian`
+--
+
+INSERT INTO `penilaian` (`id`, `pasien_id`, `kriteria_id`, `subkriteria_id`, `sequence`, `manual_value`) VALUES
+(11, 14, 12, 61, 1, '24'),
+(12, 14, 13, 64, 1, NULL),
+(13, 14, 14, 66, 1, NULL),
+(14, 14, 15, 69, 1, '160'),
+(15, 14, 16, 71, 1, '88');
 
 -- --------------------------------------------------------
 
@@ -100,7 +134,7 @@ CREATE TABLE `penilaian` (
 --
 
 CREATE TABLE `roles` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -109,7 +143,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'admin');
+(1, 'admin'),
+(2, 'uadmin'),
+(3, 'user');
 
 -- --------------------------------------------------------
 
@@ -118,11 +154,11 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `subkriteria` (
-  `id` int(11) NOT NULL,
-  `kriteria_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `kriteria_id` int NOT NULL,
   `nilai` text NOT NULL,
   `keterangan` text NOT NULL,
-  `bobot` int(11) NOT NULL
+  `bobot` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -130,19 +166,19 @@ CREATE TABLE `subkriteria` (
 --
 
 INSERT INTO `subkriteria` (`id`, `kriteria_id`, `nilai`, `keterangan`, `bobot`) VALUES
-(61, 12, '23-22', 'Buruk', 1),
+(61, 12, '>22', 'Buruk', 1),
 (62, 12, '19-21,9', 'Buruk', 2),
 (63, 12, '<19', 'Cukup', 3),
 (64, 13, 'Wasting Tidak Bergelambir', 'Buruk', 1),
 (65, 13, 'Wasting Bergelambir', 'Cukup', 2),
 (66, 14, 'Tidak Kehilangan Otot Lemak Dada', 'Buruk', 1),
 (67, 14, 'Kehilangan Otot Lemak Dada', 'Cukup', 2),
-(68, 15, '165 - 160 cm', 'Buruk', 1),
+(68, 15, '>165 cm', 'Buruk', 1),
 (69, 15, '150 - 155 cm', 'Kurang', 2),
-(70, 15, '140 - 145 cm', 'Cukup', 3),
-(71, 16, '17,9 - 18 kg', 'Buruk', 1),
-(72, 16, '16 - 17 kg', 'Kurang', 2),
-(73, 16, '<14,9 kg', 'Cukup', 3);
+(70, 15, '<145 cm', 'Cukup', 3),
+(71, 16, '>85 kg', 'Buruk', 1),
+(72, 16, '65 - 85 kg', 'Kurang', 2),
+(73, 16, '<65 kg', 'Cukup', 3);
 
 -- --------------------------------------------------------
 
@@ -151,12 +187,12 @@ INSERT INTO `subkriteria` (`id`, `kriteria_id`, `nilai`, `keterangan`, `bobot`) 
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `image` text NOT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -164,32 +200,39 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `name`, `password`, `image`, `role_id`) VALUES
-(1, 'admin', 'Administrator', '$2y$10$uGSBRKsWu2Xv0.xCmtNxPe52W2f10pLAqdlyK4o4WVbshywCmvaOe', 'admin.png', 1);
+(1, 'admin', 'Administrator', '$2y$10$uGSBRKsWu2Xv0.xCmtNxPe52W2f10pLAqdlyK4o4WVbshywCmvaOe', 'admin.png', 1),
+(5, 'zidni', 'zidni', '$2y$10$TA2wNqTSumEBMD4ULBwhuug0Zk7E85SPaQsWrGpio6NG17TIsuroe', '', 3);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `hasil`
+-- Indeks untuk tabel `gizi`
+--
+ALTER TABLE `gizi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `kriteria`
+-- Indeks untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `pasien`
+-- Indeks untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `penilaian`
+-- Indeks untuk tabel `penilaian`
 --
 ALTER TABLE `penilaian`
   ADD PRIMARY KEY (`id`),
@@ -198,64 +241,77 @@ ALTER TABLE `penilaian`
   ADD KEY `subkriteria_id` (`subkriteria_id`);
 
 --
--- Indexes for table `roles`
+-- Indeks untuk tabel `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `subkriteria`
+-- Indeks untuk tabel `subkriteria`
 --
 ALTER TABLE `subkriteria`
   ADD PRIMARY KEY (`id`),
   ADD KEY `kriteria_id` (`kriteria_id`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `role_id` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `hasil`
+-- AUTO_INCREMENT untuk tabel `gizi`
+--
+ALTER TABLE `gizi`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `kriteria`
+-- AUTO_INCREMENT untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
--- AUTO_INCREMENT for table `pasien`
+-- AUTO_INCREMENT untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
--- AUTO_INCREMENT for table `penilaian`
+-- AUTO_INCREMENT untuk tabel `penilaian`
 --
 ALTER TABLE `penilaian`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT untuk tabel `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `subkriteria`
+-- AUTO_INCREMENT untuk tabel `subkriteria`
 --
 ALTER TABLE `subkriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -279,6 +335,7 @@ ALTER TABLE `subkriteria`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

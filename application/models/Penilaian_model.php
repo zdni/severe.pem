@@ -70,6 +70,14 @@ class Penilaian_model extends CI_Model {
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
         return $this->db->get( $this->_table );
     }
+
+    public function penilaian_per_pasien_kriteria( $pasien_id = NULL, $kriteria_id = NULL )
+    {
+        $this->db->select( $this->_table . '.*' );
+        if( $pasien_id ) $this->db->where( $this->_table . '.pasien_id', $pasien_id);
+        if( $kriteria_id ) $this->db->where( $this->_table . '.kriteria_id', $kriteria_id);
+        return $this->db->get( $this->_table );
+    }
 }
 
 ?>

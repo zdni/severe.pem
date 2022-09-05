@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Penilaian extends Uadmin_Controller {
+class Penilaian extends User_Controller {
 	
 	function __construct()
 	{
@@ -17,6 +17,10 @@ class Penilaian extends Uadmin_Controller {
 
 	public function index()
     {
+        if( $this->session->userdata('role_name') == 'user' ) {
+            return redirect( base_url('admin/penilaian/pasien') );
+        }
+
         $kriteria = $this->kriteria_model->kriteria()->result();
         foreach ($kriteria as $kri ) {
             $kri->subdatas = $this->subkriteria_model->subkriteria( NULL, $kri->id )->result();
@@ -143,5 +147,81 @@ class Penilaian extends Uadmin_Controller {
         $this->session->set_flashdata('alert', $alert);
         $this->session->set_flashdata('message', $message);
         return redirect( base_url('admin/penilaian') );
+    }
+
+    public function pasien()
+    {
+        $user_id = $this->session->userdata('user_id');
+        $pasien = $this->pasien_model->penilaian( $user_id )->row();
+        
+        $kriteria = $this->kriteria_model->kriteria()->result();
+        foreach ($kriteria as $kri ) {
+            $kri->subdatas = $this->subkriteria_model->subkriteria( NULL, $kri->id )->result();
+            
+            $penilaian = $this->penilaian_model->penilaian_per_pasien_kriteria( $pasien->id, $kri->id )->row();
+            $kri->subkriteria_id = NULL;
+            $kri->nilai = '-';
+            $kri->keterangan = '-';
+            
+            if( $penilaian ) {
+                $subkriteria = $this->subkriteria_model->subkriteria( $penilaian->subkriteria_id )->row();
+                if( $subkriteria ) {
+                    $kri->subkriteria_id = $penilaian->subkriteria_id;
+                    $kri->nilai = $subkriteria->nilai;
+                    $kri->keterangan = $subkriteria->keterangan;
+
+                    if( $kri->tipe == 2 ) $kri->nilai = $penilaian->manual_value;
+                }
+            }
+        }
+        $this->data['datas'] = $kriteria;
+        $this->data['pasien_id'] = $pasien->id;
+
+        $this->data['page'] = 'Penilaian Pasien';
+        $this->render('pasien');
+    }
+
+    public function ubah_penilaian()
+    {
+        $this->form_validation->set_rules('pasien_id', 'Kode penilaian', 'required');
+
+        $alert = 'error';
+        $message = 'Gagal Mengubah Data Penilaian Baru! <br> Silahkan isi semua inputan!';
+        if ( $this->form_validation->run() )
+        {
+            $pasien_id = $this->input->post('pasien_id');
+            $kriteria = $this->input->post('kriteria_id');
+            $manual_value = $this->input->post('manual_value');
+            
+            $this->penilaian_model->hapus( $pasien_id );
+            
+            foreach ($kriteria as $kri) {
+                $man_val = NULL;
+                
+                $_data = explode(':', $kri);
+                $data['pasien_id'] = $pasien_id;
+                $data['kriteria_id'] = $_data[0];
+                $data['sequence'] = 1;
+                $data['subkriteria_id'] = $_data[1];
+                
+                if( key_exists($_data[0], $manual_value) ) {
+                    $man_val = $manual_value[$_data[0]];
+                }
+                $data['manual_value'] = $man_val;
+                
+                if( $this->penilaian_model->tambah( $data ) )
+                {
+                    $alert = 'success';
+                    $message = 'Berhasil Mengubah Penilaian!';
+                } else {
+                    $message = 'Gagal Mengubah Penilaian!';
+                    break;
+                }
+            }
+        }
+
+        $this->session->set_flashdata('alert', $alert);
+        $this->session->set_flashdata('message', $message);
+        return redirect( base_url('admin/penilaian/pasien') );
     }
 }

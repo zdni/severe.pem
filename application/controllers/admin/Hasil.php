@@ -7,14 +7,15 @@ class Hasil extends User_Controller {
 	{
         parent::__construct();
         $this->load->model([
-            'kriteria_model',
+            'hasil_model',
         ]);
         $this->data['menu_id'] = 'hasil_index';
 	}
 
 	public function index()
     {
-        $this->data['datas'] = $this->kriteria_model->kriteria()->result();
+        $this->data['datas'] = $this->hasil_model->hasil()->result();
+        
         $this->data['page'] = 'Hasil';
         $this->render('admin/hasil');
     }

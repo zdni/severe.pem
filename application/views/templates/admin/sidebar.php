@@ -19,7 +19,7 @@
             <span class="nav-text">Foto Gizi Buruk</span>
           </a>
         </li>
-        <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
+        <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
         <li>
           <a href="<?= base_url('admin/kriteria') ?>" class="ai-icon" aria-expanded="false" id="kriteria_index">
             <i class="flaticon-381-reading"></i>
@@ -38,13 +38,13 @@
             <span class="nav-text">Data Pasien</span>
           </a>
         </li>
+        <?php endif; ?>
         <li>
           <a href="<?= base_url('admin/penilaian') ?>" class="ai-icon" aria-expanded="false" id="penilaian_index">
             <i class="flaticon-381-list-1"></i>
             <span class="nav-text">Data Penilaian</span>
           </a>
         </li>
-        <?php endif; ?>
         <li>
           <a href="<?= base_url('admin/perhitungan') ?>" class="ai-icon" aria-expanded="false" id="perhitungan_index">
             <i class="flaticon-381-notepad"></i>

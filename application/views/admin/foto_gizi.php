@@ -1,6 +1,6 @@
 <div class="content-body">
     <div class="container-fluid">
-        <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
+        <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
         <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-tambah-foto-gizi-buruk">Tambah <?= $page ?></button>
         <div class="modal fade" id="modal-tambah-foto-gizi-buruk">
             <div class="modal-dialog" role="document">
@@ -49,7 +49,7 @@
                                 <div class="col-md-7 col-xxl-12">
                                     <div class="new-arrival-content position-relative">
                                         <h4><?= $data->title ?></h4>
-                                        <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
+                                        <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
                                         <div class="comment-review star-rating">
                                             <span class="review-text"></span><a class="product-review" href=""  data-bs-toggle="modal" data-bs-target="#modal-hapus-foto-gizi-buruk-<?= $data->id ?>">Hapus Foto?</a>
                                         </div>

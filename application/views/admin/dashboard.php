@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
+      <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
       <div class="col-xl-6 col-xxl-6">
         <div class="row">
           <div class="col-xl-6 col-lg-3 col-sm-6">

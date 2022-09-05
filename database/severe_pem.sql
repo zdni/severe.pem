@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 02 Sep 2022 pada 08.00
+-- Waktu pembuatan: 05 Sep 2022 pada 19.43
 -- Versi server: 8.0.30-0ubuntu0.22.04.1
 -- Versi PHP: 8.1.2
 
@@ -49,9 +49,18 @@ INSERT INTO `gizi` (`id`, `title`, `foto`, `keterangan`) VALUES
 
 CREATE TABLE `hasil` (
   `id` int NOT NULL,
-  `tanggal` date NOT NULL,
-  `file` text NOT NULL
+  `pasien_id` int NOT NULL,
+  `ui` varchar(255) NOT NULL,
+  `ranking` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `hasil`
+--
+
+INSERT INTO `hasil` (`id`, `pasien_id`, `ui`, `ranking`) VALUES
+(3, 14, '87.5', 2),
+(4, 19, '100', 1);
 
 -- --------------------------------------------------------
 
@@ -87,19 +96,17 @@ INSERT INTO `kriteria` (`id`, `kode`, `nama`, `bobot`, `jenis`, `tipe`) VALUES
 
 CREATE TABLE `pasien` (
   `id` int NOT NULL,
-  `nama` text NOT NULL
+  `nama` text NOT NULL,
+  `user_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pasien`
 --
 
-INSERT INTO `pasien` (`id`, `nama`) VALUES
-(14, 'Ny. Hayan'),
-(15, 'Ny. Ratnia'),
-(16, 'Tn. Kaerudin'),
-(17, 'Tn. Bangun'),
-(18, 'Ny. Saharia');
+INSERT INTO `pasien` (`id`, `nama`, `user_id`) VALUES
+(14, 'Ny. Hayan', NULL),
+(19, 'Fajar', 7);
 
 -- --------------------------------------------------------
 
@@ -125,7 +132,12 @@ INSERT INTO `penilaian` (`id`, `pasien_id`, `kriteria_id`, `subkriteria_id`, `se
 (12, 14, 13, 64, 1, NULL),
 (13, 14, 14, 66, 1, NULL),
 (14, 14, 15, 69, 1, '160'),
-(15, 14, 16, 71, 1, '88');
+(15, 14, 16, 71, 1, '88'),
+(16, 19, 12, 62, 1, '20'),
+(17, 19, 13, 64, 1, NULL),
+(18, 19, 14, 66, 1, NULL),
+(19, 19, 15, 68, 1, '178'),
+(20, 19, 16, 72, 1, '70');
 
 -- --------------------------------------------------------
 
@@ -201,7 +213,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `name`, `password`, `image`, `role_id`) VALUES
 (1, 'admin', 'Administrator', '$2y$10$uGSBRKsWu2Xv0.xCmtNxPe52W2f10pLAqdlyK4o4WVbshywCmvaOe', 'admin.png', 1),
-(5, 'zidni', 'zidni', '$2y$10$TA2wNqTSumEBMD4ULBwhuug0Zk7E85SPaQsWrGpio6NG17TIsuroe', '', 3);
+(5, 'zidni', 'zidni', '$2y$10$TA2wNqTSumEBMD4ULBwhuug0Zk7E85SPaQsWrGpio6NG17TIsuroe', '', 3),
+(7, 'fajar', 'Fajar', '$2y$10$TF3ViDb9OE1t7Z6vfRlYOeitSKeBtuTfpak0wdWkOc7NvohK97TDi', '', 3);
 
 --
 -- Indexes for dumped tables
@@ -217,7 +230,8 @@ ALTER TABLE `gizi`
 -- Indeks untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pasien_id` (`pasien_id`);
 
 --
 -- Indeks untuk tabel `kriteria`
@@ -229,7 +243,8 @@ ALTER TABLE `kriteria`
 -- Indeks untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indeks untuk tabel `penilaian`
@@ -274,7 +289,7 @@ ALTER TABLE `gizi`
 -- AUTO_INCREMENT untuk tabel `hasil`
 --
 ALTER TABLE `hasil`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kriteria`
@@ -286,13 +301,13 @@ ALTER TABLE `kriteria`
 -- AUTO_INCREMENT untuk tabel `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `penilaian`
 --
 ALTER TABLE `penilaian`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `roles`
@@ -310,11 +325,23 @@ ALTER TABLE `subkriteria`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `hasil`
+--
+ALTER TABLE `hasil`
+  ADD CONSTRAINT `hasil_ibfk_1` FOREIGN KEY (`pasien_id`) REFERENCES `pasien` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Ketidakleluasaan untuk tabel `pasien`
+--
+ALTER TABLE `pasien`
+  ADD CONSTRAINT `pasien_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Ketidakleluasaan untuk tabel `penilaian`

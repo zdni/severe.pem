@@ -8,6 +8,7 @@ class Perhitungan extends User_Controller {
         parent::__construct();
         $this->load->model([
             'kriteria_model',
+            'hasil_model',
             'pasien_model',
             'penilaian_model',
             'subkriteria_model',
@@ -113,9 +114,16 @@ class Perhitungan extends User_Controller {
         $datas = [];
         foreach ($u_i as $altern => $value) {
             foreach ($ordered_u_i as $rank => $value_ordered) {
-                if( $value_ordered == $value ) $datas[$altern] = ['hasil' => $value, 'rank' => $rank+1];
+                if( $value_ordered == $value ) {
+                    $datas[$altern] = ['hasil' => $value, 'rank' => $rank+1];
+                    $pasien_id = $this->pasien_model->pasien_berdasarkan_nama( $altern )->row()->id;
+                    $hasil[] = ['ui' => $value, 'ranking' => $rank+1, 'pasien_id' => $pasien_id];
+                } 
             }
         }
+
+        $this->hasil_model->hapus_semua(  );
+        $this->hasil_model->tambah_batch( $hasil );
 
         $this->data['normalisasi_matriks'] = $normalisasi_matriks;
         $this->data['matriks_dij'] = $matriks_dij;

@@ -10,7 +10,7 @@
         <div class="card-body">
           <?= $artikel ?>
         </div>
-        <?php if( $this->session->userdata('role_name') == 'admin' ): ?>
+        <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
         <div class="card-footer">
           <a href="<?= base_url('admin/gizi/edit_artikel') ?>" class="btn btn-xs btn-secondary">Edit</a>
         </div>

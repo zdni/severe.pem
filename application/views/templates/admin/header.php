@@ -24,7 +24,7 @@
                   <a class="nav-link" href="javascript:void(0);" role="button" data-bs-toggle="dropdown">
                     <div class="header-info">
                       <span><?= $name ?></span>
-                      <small>ADMIN</small>
+                      <small><?= ucwords( $this->session->userdata('role_name') ) ?></small>
                     </div>
                     <img src="<?= $user_image ?>" width="20" alt=""/>
                   </a>

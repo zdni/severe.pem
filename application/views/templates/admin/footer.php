@@ -21,6 +21,7 @@
     if( "<?php echo $this->session->flashdata('logout') != null ?>" ) setTimeout(() => { window.location.replace("<?= base_url('auth/logout') ?>") }, 5000);
 
     const menu_id = "<?= $menu_id ?>";
+    console.log( menu_id );
     const menu_link = document.getElementById( menu_id );
     if( menu_link ) menu_link.classList.add('active');
     

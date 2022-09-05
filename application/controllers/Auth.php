@@ -8,6 +8,7 @@ class Auth extends CI_Controller {
         parent::__construct();
         $this->load->model([
             'users_model',
+            'pasien_model',
         ]);
 	}
 
@@ -55,9 +56,18 @@ class Auth extends CI_Controller {
             $data['name'] = $name;
             $data['password'] = password_hash($password, PASSWORD_DEFAULT);
             $data['role_id'] = 3;
+
+            $user_id = $this->users_model->create( $data );
             
-            if( $this->users_model->create( $data ) )
+            if( $user_id )
             {
+                $data = [
+                    'nama' => $name,
+                    'user_id' => $user_id,
+                ];
+                
+                $this->pasien_model->tambah( $data );
+                
                 $alert = 'success';
                 $message = 'Berhasil Mendaftarkan Akun! Silahkan login';
                 $url = 'auth/login';

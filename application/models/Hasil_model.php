@@ -1,7 +1,7 @@
 <?php
 
-class Pasien_model extends CI_Model {
-    private $_table = 'pasien';
+class Hasil_model extends CI_Model {
+    private $_table = 'hasil';
 
     public function tambah( $data = NULL )
     {
@@ -9,6 +9,14 @@ class Pasien_model extends CI_Model {
             $this->db->insert( $this->_table, $data);
             $insert_id = $this->db->insert_id();
             return $insert_id;
+        }
+        return false;
+    }
+
+    public function tambah_batch( $data = NULL )
+    {
+        if ( $data ) {
+            return $this->db->insert_batch( $this->_table, $data);
         }
         return false;
     }
@@ -31,18 +39,23 @@ class Pasien_model extends CI_Model {
         return false;
     }
 
-    public function pasien( $id = NULL, $start = NULL, $end = NULL )
+    public function hapus_semua()
     {
-        $this->db->select( $this->_table . '.*' );
-        if( $id ) $this->db->where( $this->_table . '.id', $id);
-        if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
-        return $this->db->get( $this->_table );
+        $this->db->where( $this->_table . '.id>', 0 );
+        return $this->db->delete( $this->_table );
     }
 
-    public function pasien_berdasarkan_nama( $nama = NULL )
+    public function hasil( $id = NULL )
     {
-        $this->db->select( $this->_table . '.id' );
-        if( $nama ) $this->db->where( $this->_table . '.nama', $nama);
+        $this->db->select( $this->_table . '.*' );
+        $this->db->select( 'pasien.nama AS nama' );
+        $this->db->join(
+            'pasien',
+            'pasien.id = hasil.pasien_id',
+            'join'
+        );
+        if( $id ) $this->db->where( $this->_table . '.id', $id);
+        $this->db->order_by('ranking', 'ASC');
         return $this->db->get( $this->_table );
     }
 }

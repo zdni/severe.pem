@@ -45,6 +45,13 @@ class Pasien_model extends CI_Model {
         if( $nama ) $this->db->where( $this->_table . '.nama', $nama);
         return $this->db->get( $this->_table );
     }
+
+    public function pasien_berdasarkan_user_id( $user_id = NULL )
+    {
+        $this->db->select( $this->_table . '.id' );
+        if( $user_id ) $this->db->where( $this->_table . '.user_id', $user_id);
+        return $this->db->get( $this->_table );
+    }
 }
 
 ?>

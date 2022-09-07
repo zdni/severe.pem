@@ -30,10 +30,14 @@ class Hasil_model extends CI_Model {
         return false;
     }
 
-    public function hapus( $id = NULL )
+    public function hapus( $id = NULL, $pasien_id = NULL )
     {
         if ( $id ) {
             $this->db->where( $this->_table . '.id', $id );
+            return $this->db->delete( $this->_table );
+        }
+        if ( $pasien_id ) {
+            $this->db->where( $this->_table . '.pasien_id', $pasien_id );
             return $this->db->delete( $this->_table );
         }
         return false;

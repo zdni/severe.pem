@@ -7,6 +7,7 @@ class Pasien extends Uadmin_Controller {
 	{
         parent::__construct();
         $this->load->model([
+            'hasil_model',
             'pasien_model',
             'penilaian_model'
         ]);
@@ -96,6 +97,10 @@ class Pasien extends Uadmin_Controller {
         if( $this->form_validation->run() )
         {
             $id = $this->input->post('id');
+            
+            $this->hasil_model->hapus_semua();
+            $this->penilaian_model->hapus( NULL, $id );
+            
             if( $this->pasien_model->hapus( $id ) )
             {
                 $alert = 'success';

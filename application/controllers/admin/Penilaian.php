@@ -152,13 +152,23 @@ class Penilaian extends User_Controller {
     public function pasien()
     {
         $user_id = $this->session->userdata('user_id');
-        $pasien = $this->pasien_model->penilaian( $user_id )->row();
+        $pasien = $this->pasien_model->pasien_berdasarkan_user_id( $user_id )->row();
+        
+        if( !$pasien ) {
+            $data = [
+                'nama' => $this->session->userdata('name'),
+                'user_id' => $user_id,
+            ];
+            $pasien_id = $this->pasien_model->tambah( $data );
+        } else {
+            $pasien_id = $pasien->id;
+        }
         
         $kriteria = $this->kriteria_model->kriteria()->result();
         foreach ($kriteria as $kri ) {
             $kri->subdatas = $this->subkriteria_model->subkriteria( NULL, $kri->id )->result();
             
-            $penilaian = $this->penilaian_model->penilaian_per_pasien_kriteria( $pasien->id, $kri->id )->row();
+            $penilaian = $this->penilaian_model->penilaian_per_pasien_kriteria( $pasien_id, $kri->id )->row();
             $kri->subkriteria_id = NULL;
             $kri->nilai = '-';
             $kri->keterangan = '-';
@@ -175,7 +185,7 @@ class Penilaian extends User_Controller {
             }
         }
         $this->data['datas'] = $kriteria;
-        $this->data['pasien_id'] = $pasien->id;
+        $this->data['pasien_id'] = $pasien_id;
 
         $this->data['page'] = 'Penilaian Pasien';
         $this->render('pasien');

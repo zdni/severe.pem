@@ -6,16 +6,14 @@
       </div>
     </div>
     <div class="row mt-3">
-      <div class="card">
-        <div class="card-body">
-          <?= $artikel ?>
-        </div>
-        <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
-        <div class="card-footer">
-          <a href="<?= base_url('admin/gizi/edit_artikel') ?>" class="btn btn-xs btn-secondary">Edit</a>
-        </div>
-        <?php endif; ?>
+      <div class="col-12">
+        <?= $artikel ?>
       </div>
+      <?php if( in_array($this->session->userdata('role_name'), ['admin', 'uadmin']) ): ?>
+      <div class="col-md-2 mt-3">
+        <a href="<?= base_url('admin/gizi/edit_artikel') ?>" class="btn btn-xs btn-secondary">Edit</a>
+      </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>

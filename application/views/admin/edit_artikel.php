@@ -9,11 +9,11 @@
       <div class="card">
         <form action="<?= base_url('admin/gizi/edit_artikel') ?>" method="post">
         <input type="hidden" name="artikel" value="1">
+          <div class="card-header">
+            <button type="submit" class="btn btn-xs btn-primary">Simpan</button>
+          </div>
           <div class="card-body">
             <textarea id="ckeditor" name="content" cols="30" rows="10"><?= $artikel ?></textarea>
-          </div>
-          <div class="card-footer">
-            <button type="submit" class="btn btn-xs btn-primary">Simpan</button>
           </div>
         </form>
       </div>

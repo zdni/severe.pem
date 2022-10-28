@@ -48,7 +48,7 @@ class Perhitungan extends User_Controller {
         $jumlah_kriteria = count( $kriteria );
 
         // buat matriks nilai
-        foreach ($alternatif as $pas ) {
+        foreach ($alternatif as $key => $pas ) {
             $pas->penilaian = [];
             $data = [];
             $penilaian = $this->penilaian_model->penilaian( NULL, $pas->id )->result();
@@ -62,11 +62,13 @@ class Perhitungan extends User_Controller {
                 }
             }
             if( $jumlah_kriteria != count( $data ) ) {
-                $this->session->set_flashdata('alert', 'error');
-                $this->session->set_flashdata('message', 'Data Tidak Lengkap! Silahkan Lengkapi Data Terlebih Dahulu');
-                return redirect( base_url( 'admin/perhitungan' ) );
+                // $this->session->set_flashdata('alert', 'error');
+                // $this->session->set_flashdata('message', 'Data Tidak Lengkap! Silahkan Lengkapi Data Terlebih Dahulu');
+                // return redirect( base_url( 'admin/perhitungan' ) );
+                unset( $alternatif[$key] );
+            } else {
+                $matriks_nilai[$pas->nama] = $data;
             }
-            $matriks_nilai[$pas->nama] = $data;
         }
 
         // normalisasi matriks
@@ -107,7 +109,7 @@ class Perhitungan extends User_Controller {
             }
         }
         foreach ($q_i as $altern => $value) {
-            $u_i[$altern] = $value / $max_q * 100;
+            $u_i[$altern] = $value / $max_q * 1;
         }
         $ordered_u_i = $u_i;
         rsort($ordered_u_i);
@@ -130,7 +132,12 @@ class Perhitungan extends User_Controller {
         $this->data['datas'] = $datas;
         $this->data['kriteria'] = $kriteria;
         $this->data['pasien'] = $alternatif;
+        $this->data['s_plus_i_array'] = $s_plus_i_array;
+        $this->data['s_min_i_array'] = $s_min_i_array;
+        $this->data['q_i'] = $q_i;
+        $this->data['max_q'] = $max_q;
         $this->data['page'] = 'Perhitungan Metode COPRAS';
+        $this->data['status'] = ['Normal', 'Malnutrisi Ringan (Mild PEM)', 'Malnutrisi Sedang (Moderate PEM)', 'Severe PEM'];
         $this->render('admin/copras');
     }
 }

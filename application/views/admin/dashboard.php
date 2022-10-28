@@ -17,7 +17,9 @@
                     <i class="flaticon-381-reading"></i>
                   </span>
                   <div class="media-body text-white text-end">
-                    <p class="mb-1">Data Kriteria</p>
+                    <p class="mb-1">
+                      <a href="<?= base_url('admin/kriteria') ?>" style="color: white;">Data Kriteria</a>
+                    </p>
                     <h3 class="text-white"><?= $kriteria ?></h3>
                   </div>
                 </div>
@@ -32,7 +34,9 @@
                     <i class="flaticon-381-user-8"></i>
                   </span>
                   <div class="media-body text-white text-end">
-                    <p class="mb-1 text-nowrap">Data Pasien</p>
+                    <p class="mb-1 text-nowrap">
+                      <a href="<?= base_url('admin/pasien') ?>" style="color: white;">Data Pasien</a>
+                    </p>
                     <h3 class="text-white"><?= $pasien ?></h3>
                   </div>
                 </div>
@@ -47,7 +51,9 @@
                     <i class="flaticon-381-list-1"></i>
                   </span>
                   <div class="media-body text-white text-end">
-                    <p class="mb-1 text-nowrap">Data Penilaian</p>
+                    <p class="mb-1 text-nowrap">
+                      <a href="<?= base_url('admin/penilaian') ?>" style="color: white;">Data Penilaian</a>
+                    </p>
                     <h3 class="text-white"><?= $penilaian ?></h3>
                   </div>
                 </div>
@@ -62,7 +68,9 @@
                     <i class="flaticon-381-pad"></i>
                   </span>
                   <div class="media-body text-white text-end">
-                    <p class="mb-1">Data Subkriteria</p>
+                    <p class="mb-1">
+                      <a href="<?= base_url('admin/subkriteria') ?>" style="color: white;">Data Subkriteria</a>
+                    </p>
                     <h3 class="text-white"><?= $subkriteria ?></h3>
                   </div>
                 </div>

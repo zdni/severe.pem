@@ -15,6 +15,7 @@ class Hasil extends User_Controller {
 	public function index()
     {
         $this->data['datas'] = $this->hasil_model->hasil()->result();
+        $this->data['status'] = ['Normal', 'Malnutrisi Ringan (Mild PEM)', 'Malnutrisi Sedang (Moderate PEM)', 'Severe PEM'];
         
         $this->data['page'] = 'Hasil';
         $this->render('admin/hasil');

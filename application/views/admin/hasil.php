@@ -13,6 +13,7 @@
                 <th>Pasien</th>
                 <th>Hasil</th>
                 <th>Ranking</th>
+                <th>Status</th>
               </thead>
               <tbody>
                 <?php $number = 1; foreach ($datas as $data) {  ?>
@@ -21,6 +22,7 @@
                     <td><?= $data->nama ?></td>
                     <td><?= $data->ui ?></td>
                     <td><?= $data->ranking ?></td>
+                    <td><?= $status[ ceil($data->ui/0.25)-1 ] ?></td>
                   </tr>                        
                 <?php $number++; } ?>
               </tbody>

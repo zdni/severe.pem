@@ -173,7 +173,7 @@
                   <th>Pasien</th>
                   <th>Hasil</th>
                   <th>Ranking</th>
-                  <th>Status</th>
+                  <!-- <th>Status</th> -->
                 </thead>
                 <tbody>
                   <?php $number = 1; foreach ($datas as $pasien => $data) {  ?>
@@ -182,7 +182,7 @@
                       <td><?= $pasien ?></td>
                       <td><?= $data['hasil'] ?></td>
                       <td><?= $data['rank'] ?></td>
-                      <td><?= $status[ ceil($data['hasil']/0.25)-1 ] ?></td>
+                      <!-- <td><?= $status[ ceil($data['hasil']/0.25)-1 ] ?></td> -->
                     </tr>                        
                   <?php $number++; } ?>
                 </tbody>

@@ -88,7 +88,7 @@
                       <td><?= $number ?></td>
                       <td><?= $pas ?></td>
                       <?php foreach ($kriteria as $kri) { ?>
-                        <td><?= round($data[$kri->id], 2) ?></td>
+                        <td><?= $data[$kri->id] ?></td>
                       <?php } ?>
                     </tr>                        
                   <?php $number++; } ?>

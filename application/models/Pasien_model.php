@@ -36,6 +36,7 @@ class Pasien_model extends CI_Model {
         $this->db->select( $this->_table . '.*' );
         if( $id ) $this->db->where( $this->_table . '.id', $id);
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
+        $this->db->order_by( $this->_table . '.id DESC' );
         return $this->db->get( $this->_table );
     }
 
@@ -43,6 +44,7 @@ class Pasien_model extends CI_Model {
     {
         $this->db->select( $this->_table . '.id' );
         if( $nama ) $this->db->where( $this->_table . '.nama', $nama);
+        $this->db->order_by( $this->_table . '.id DESC' );
         return $this->db->get( $this->_table );
     }
 
@@ -50,6 +52,7 @@ class Pasien_model extends CI_Model {
     {
         $this->db->select( $this->_table . '.id' );
         if( $user_id ) $this->db->where( $this->_table . '.user_id', $user_id);
+        $this->db->order_by( $this->_table . '.id DESC' );
         return $this->db->get( $this->_table );
     }
 }

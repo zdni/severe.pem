@@ -72,6 +72,7 @@ class Penilaian_model extends CI_Model {
         if( $id ) $this->db->where( $this->_table . '.id', $id);
         if( $pasien_id ) $this->db->where( $this->_table . '.pasien_id', $pasien_id);
         if( !is_null($start) && $end ) return $this->db->get( $this->_table, $end, $start );
+        $this->db->order_by( $this->_table . '.id DESC' );
         return $this->db->get( $this->_table );
     }
 
@@ -80,6 +81,7 @@ class Penilaian_model extends CI_Model {
         $this->db->select( $this->_table . '.*' );
         if( $pasien_id ) $this->db->where( $this->_table . '.pasien_id', $pasien_id);
         if( $kriteria_id ) $this->db->where( $this->_table . '.kriteria_id', $kriteria_id);
+        $this->db->order_by( $this->_table . '.id DESC' );
         return $this->db->get( $this->_table );
     }
 }

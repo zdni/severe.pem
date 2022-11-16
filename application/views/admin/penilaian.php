@@ -24,9 +24,9 @@
                   </div>
                   <?php foreach ($kriteria as $kri) { ?>
                     <div class="form-group">
-                      <label for=""><?= $kri->nama ?></label>
                       <div class="row">
                         <div class="col">
+                          <label for=""><?= $kri->nama ?></label>
                           <select name="kriteria_id[]" id="kriteria_id[]" class="form-control" required>
                           <?php foreach ($kri->subdatas as $subkriteria) { ?>
                             <option value="<?= $kri->id . ':' . $subkriteria->id ?>"><?= $subkriteria->nilai ?></option>
@@ -35,6 +35,7 @@
                         </div>
                         <?php if( $kri->tipe == 2 ): ?>
                           <div class="col">
+                            <label for="">Masukkan Nilai</label>
                             <input type="text" class="form-control" name="manual_value[<?= $kri->id ?>]" id="manual_value[<?= $kri->id ?>]" required>
                           </div>
                         <?php endif;?>
